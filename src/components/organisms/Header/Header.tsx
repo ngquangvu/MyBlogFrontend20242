@@ -8,9 +8,9 @@ import { Fragment, useEffect, useRef } from 'react';
 
 const NavItems = [
   { href: '/about', label: 'About' },
-  { href: '/articles', label: 'Articles' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/speaking', label: 'Speaking' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/develop', label: 'Develop' },
+  { href: '/photography', label: 'Photography' },
   { href: '/uses', label: 'Uses' },
 ];
 

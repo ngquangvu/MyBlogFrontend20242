@@ -30,7 +30,7 @@ export const metadata = {
 
 export default function Uses() {
   return (
-    <SimpleLayout title='Software I use, gadgets I love, and other things I recommend.' intro='I get asked a lot about the things I use to build software, stay productive, and live my life. Here’s a big list of all of my favorite stuff.'>
+    <SimpleLayout title='Software I use, gadgets I love, and other things I recommend.' intro='I get asked about the things I use to build software, stay productive, and live my life. Here’s a big list of all of my favorite stuff.'>
       <div className='space-y-20'>
         <ToolsSection title='Workstation'>
           <Tool title='Apple 15.6” MacBook Pro 2019, core i9, 32GB RAM'>I was using Windows laptops for a long time but I switched to MacBook. I like MacOS and performance is good for the development work I do.</Tool>
