@@ -14,6 +14,7 @@ import image2 from '@/images/photos/2.png';
 import image3 from '@/images/photos/3.png';
 import image4 from '@/images/photos/4.png';
 import image5 from '@/images/photos/5.png';
+import { useEffect, useState } from 'react';
 import { Container } from '@/components/molecules/Container';
 
 function SocialLink({
@@ -136,11 +137,18 @@ function Resume() {
 }
 
 export default function Home() {
+  const [greeting, setGreeting] = useState<string>('　');
+
+  useEffect(() => {
+    const greetings = ['Hello!', 'Hi there!', 'Hey!', 'Greetings!', 'Howdy!', 'Salutations!', 'Nice to see you!', 'Hiya!'];
+    setGreeting(greetings[Math.floor(Math.random() * greetings.length)] + ' 👋');
+  }, [])
+
   return (
     <div className='sm:px-8 mt-16 sm:mt-32'>
       <Container>
         <div className='max-w-2xl'>
-          <h1 className='text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100'>Howdy! 👋</h1>
+          <h1 className='text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100'>{greeting}</h1>
           <p className='mt-6 text-base text-zinc-600 dark:text-zinc-400'>I am Quang Vu, a full-stack developer based in Vietnam, specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.</p>
           <SocialLinKGroup />
         </div>
