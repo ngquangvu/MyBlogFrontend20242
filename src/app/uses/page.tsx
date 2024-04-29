@@ -35,9 +35,10 @@ export default function Uses() {
         <ToolsSection title='Workstation'>
           <Tool title='Apple 15.6” MacBook Pro 2019, core i9, 32GB RAM'>I was using Windows laptops for a long time but I switched to MacBook. I like MacOS and performance is good for the development work I do.</Tool>
           <Tool title='Dell 27” P2723QE 90W'>The display of this monitor is wide enough to have multiple windows open side by side at once. With 90W power delivery, I can charge my MacBook Pro with a single cable.</Tool>
-          <Tool title='Filco Minila Air 2016'>I was really liked the idea of a wireless and long battery life mechanical keyboard. I have two of these keyboards, one for my MacBook and one for my Windows PC in the office.</Tool>
-          <Tool title='Apple Magic Trackpad 2'>As much as I love the track pad on the MacBook Pro, I love the Magic Trackpad 2 even more. It’s just so much bigger and easier to use. The gestures are great and I can’t imagine using a computer without them.</Tool>
-          <Tool title='Apple Magic Keyboard 2022'>Recently I feel the mechanical keyboard is noisy for my room so I got this keyboard. It’s a great keyboard and I love the feel of the keys. Functions key perfectly work with my MacBook.</Tool>
+          <Tool title='Filco Minila Air 2016 x SP SA Oblivion Keycap'>I was really liked the idea of a wireless and long battery life mechanical keyboard and along with Oblivion retro keycap design.
+          </Tool>
+          <Tool title='Apple Magic Trackpad 2'>As much as I love the track pad on the MacBook Pro, I love the Magic Trackpad 2 even more. It’s just so big and easy to use. The gestures are great and I can’t imagine using a computer without them.</Tool>
+          <Tool title='Apple Magic Keyboard 2022'>Recently, I’ve noticed that the keycap profile of my mechanical keyboard creates some noise, so I decided to switch to this keyboard. The typing experience is okay, and the function keys seamlessly integrate with my MacBook, working perfectly.</Tool>
           <Tool title='Apple Airpod Pro 2'>Last gadget in this list I bought from Apple. I was using overhead and overear headphones but the weight of them was bothering me. So I switched to Airpod Pro 2, the sound quality and the noise cancellation is good enough for me.</Tool>
           <Tool title='SMA Ergonomic 02'>My back was hurting from sitting in a chair all day so I got this chair. It’s not the most comfortable chair I’ve ever sat in but it’s is comfortable chair.</Tool>
         </ToolsSection>

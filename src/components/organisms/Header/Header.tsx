@@ -58,7 +58,7 @@ export function Header() {
   }
 
   return (
-    <header className='relative w-full max-w-6xl py-4 m-auto'>
+    <header className='relative w-full max-w-6xl py-5 m-auto'>
       <div className='flex justify-center m-auto'>
         <ContainerOuter>
           <ContainerInner>
