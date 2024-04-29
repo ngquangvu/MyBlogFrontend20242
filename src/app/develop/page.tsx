@@ -1,6 +1,5 @@
 'use client';
 
-import { type Metadata } from 'next';
 import { Icon } from '@iconify/react';
 
 import logoHitachi from '@/images/logos/customer/Hitachi.svg';
@@ -256,7 +255,9 @@ function UsableList({ items, title }: { items: Array<UsableItem>; title: string 
                 </a>
               ) : (
                 <div className='flex flex-col items-center gap-2'>
-                  <Icon className='h-10 w-auto text-zinc-600' icon={item.icon} />
+                  <div className='h-10 w-10'>
+                    <Icon className='h-10 w-auto text-zinc-600' icon={item.icon} />
+                  </div>
                   <span className='text-center'>{item.title}</span>
                 </div>
               )}
@@ -351,7 +352,7 @@ export default function Develop() {
   return (
     <Container className='sm:px-8 mt-16 sm:mt-32'>
       <div>
-        <SectionTitle title='Some of my Skills.' intro='After investing significant time in learning and working, I have acquired and nurtured essential skills' />
+        <SectionTitle title='Some of my Skills.' intro='After dedicating considerable time to both learning and working, I’ve actively developed and achieved proficiency in a wide range of essential skills' />
         <div className='mt-16 sm:mt-20'>
           <ul className='grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {skills.map((skill, index) => (

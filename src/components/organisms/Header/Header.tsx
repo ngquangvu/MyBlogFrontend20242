@@ -7,6 +7,7 @@ import { Popover, Transition } from '@headlessui/react';
 import { Fragment, useEffect, useRef } from 'react';
 
 const NavItems = [
+  { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/blog', label: 'Blog' },
   { href: '/develop', label: 'Develop' },
