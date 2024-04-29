@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import portraitImage from '@/images/photos/1.png';
+import portraitImage from '@/images/photos/photo_1.jpeg';
 import { Container } from '@/components/molecules/Container';
 import clsx from 'clsx';
 
