@@ -7,10 +7,11 @@ import { Popover, Transition } from '@headlessui/react';
 import { Fragment, useEffect, useRef } from 'react';
 
 const NavItems = [
+  { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/articles', label: 'Articles' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/speaking', label: 'Speaking' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/develop', label: 'Develop' },
+  { href: '/photography', label: 'Photography' },
   { href: '/uses', label: 'Uses' },
 ];
 
@@ -58,7 +59,7 @@ export function Header() {
   }
 
   return (
-    <header className='relative w-full max-w-6xl py-4 m-auto'>
+    <header className='relative w-full max-w-6xl py-5 m-auto'>
       <div className='flex justify-center m-auto'>
         <ContainerOuter>
           <ContainerInner>

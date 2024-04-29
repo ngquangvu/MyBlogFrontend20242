@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.19",
-    "@iconify/react": "^4.1.1",
     "@mapbox/rehype-prism": "^0.9.0",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.1",
@@ -18,10 +17,13 @@
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-grid-gallery": "^1.0.1-alpha.0",
     "react-query": "^3.39.3",
-    "recoil": "^0.7.7"
+    "recoil": "^0.7.7",
+    "yet-another-react-lightbox": "^3.17.5"
   },
   "devDependencies": {
+    "@iconify/react": "^4.1.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
