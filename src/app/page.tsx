@@ -228,7 +228,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='sm:px-8 mt-16 sm:mt-32'>
+    <div className='sm:px-8 mt-16 sm:mt-28'>
       <Container>
         <div className='max-w-2xl'>
           <h1 className='text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100'>{greeting}</h1>

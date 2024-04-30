@@ -11,7 +11,7 @@ export function SimpleLayout({
   children?: React.ReactNode
 }) {
   return (
-    <Container className="mt-16 sm:mt-32">
+    <Container className="mt-16 sm:mt-28">
       <SectionTitle title={title} intro={intro} />
       {children && <div className="mt-16 sm:mt-20">{children}</div>}
     </Container>

@@ -43,7 +43,7 @@ export default function Uses() {
         </ToolsSection>
         <ToolsSection title='Development tools'>
           <Tool title='VS Code'>Best code editor I’ve ever used. I’ve tried a lot of them but I always come back to VS Code. It’s fast, has great extensions, and is just a pleasure to use.</Tool>
-          <Tool title='iTerm2'>Simple but powerful terminal emulator. I like the split panes and the ability to have multiple tabs open at once.</Tool>
+          <Tool title='iTerm2'>A simple terminal emulator that’s highly customizable, offering numerous advanced features, seamless integration, and optimized performance.</Tool>
           <Tool title='Insomnia'>Postman is great, but I prefer Insomnia. It’s simpler, faster, and I like its design.</Tool>
         </ToolsSection>
         <ToolsSection title='Design'>

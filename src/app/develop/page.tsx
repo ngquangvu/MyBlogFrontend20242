@@ -350,7 +350,7 @@ function CustomerList({ items }: { items: Array<UsableItem> }) {
 
 export default function Develop() {
   return (
-    <Container className='sm:px-8 mt-16 sm:mt-32'>
+    <Container className='sm:px-8 mt-16 sm:mt-28'>
       <div>
         <SectionTitle title='Some of my skills.' intro='After dedicating considerable time to both learning and working, I’ve actively developed and achieved proficiency in a wide range of essential skills' />
         <div className='mt-16 sm:mt-20'>
@@ -362,7 +362,7 @@ export default function Develop() {
         </div>
       </div>
 
-      <div className='sm:px-8 mt-16 sm:mt-32'>
+      <div className='sm:px-8 mt-16 sm:mt-28'>
         <SectionTitle title='Tech stack & tools.' intro='I have experience working with a variety of languages, frameworks, and platforms, enabling me to deliver high-quality software solutions.' />
         <div className='mt-16 sm:mt-20'>
           <div className='flex flex-col space-y-8'>
@@ -373,7 +373,7 @@ export default function Develop() {
         </div>
       </div>
 
-      <div className='sm:px-8 mt-16 sm:mt-32'>
+      <div className='sm:px-8 mt-16 sm:mt-28'>
         <SectionTitle title='Some of my customers.' intro='Many of my customers are well-known companies in Japan, and I have had the privilege of working with them on various projects.' />
         <div className='mt-16 sm:mt-20'>
           <div className=''>

@@ -266,7 +266,7 @@ export default function Photography() {
     },
   }
   return (
-    <Container className='sm:px-8 mt-16 sm:mt-32'>
+    <Container className='sm:px-8 mt-16 sm:mt-28'>
       <div>
         <SectionTitle title='Some photos I took.' intro='I love taking photos everywhere I go. Here are some of my favorite shots.' />
         <div className='mt-16 sm:mt-20'>
