@@ -1,7 +1,9 @@
 'use client';
 
 import { Icon } from '@iconify/react';
-
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Image, { type ImageProps } from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
@@ -9,11 +11,6 @@ import clsx from 'clsx';
 import logoCanvasAsia from '@/images/logos/company/canvas_asia.png';
 import logoFujinet from '@/images/logos/company/fujinet_jsc.png';
 import logoHCMUTE from '@/images/logos/company/hcmute.png';
-import image1 from '@/images/photos/photo_1.jpeg';
-import image2 from '@/images/photos/photo_2.jpeg';
-import image3 from '@/images/photos/photo_3.jpeg';
-import image4 from '@/images/photos/photo_4.jpeg';
-import image5 from '@/images/photos/photo_5.jpeg';
 import { useEffect, useState } from 'react';
 import { Container } from '@/components/molecules/Container';
 
@@ -37,22 +34,6 @@ function SocialLinKGroup() {
       <SocialLink href='#' aria-label='Follow on Instagram' icon={() => <Icon icon='mdi:instagram' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
       <SocialLink href='#' aria-label='Follow on GitHub' icon={() => <Icon icon='mdi:github' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
       <SocialLink href='#' aria-label='Follow on LinkedIn' icon={() => <Icon icon='mdi:linkedin' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
-    </div>
-  );
-}
-
-function Photos() {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2'];
-
-  return (
-    <div className='mt-16 sm:mt-20'>
-      <div className='-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8'>
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
-          <div key={image.src} className={clsx('relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800')}>
-            <Image src={image} alt='' sizes='(min-width: 640px) 18rem, 11rem' className='absolute inset-0 h-full w-full object-cover' />
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
@@ -136,13 +117,67 @@ function Resume() {
   );
 }
 
+const imagesSlide: string[] = ['/images/slide/slide_1.jpeg', '/images/slide/slide_2.jpeg', '/images/slide/slide_3.jpeg', '/images/slide/slide_4.jpeg', '/images/slide/slide_5.jpeg', '/images/slide/slide_6.jpeg', '/images/slide/slide_7.jpeg', '/images/slide/slide_8.jpeg', '/images/slide/slide_9.jpeg', '/images/slide/slide_10.jpeg', '/images/slide/slide_11.jpeg', '/images/slide/slide_12.jpeg', '/images/slide/slide_13.jpeg', '/images/slide/slide_14.jpeg', '/images/slide/slide_15.jpeg', '/images/slide/slide_16.jpeg', '/images/slide/slide_17.jpeg', '/images/slide/slide_18.jpeg', '/images/slide/slide_19.jpeg', '/images/slide/slide_20.jpeg', '/images/slide/slide_21.jpeg', '/images/slide/slide_22.jpeg', '/images/slide/slide_23.jpeg'];
+
+function SlideImages() {
+  const settingsSlide = {
+    slidesToScroll: 1,
+    slidesToShow: 4,
+    autoplay: true,
+    speed: 5500,
+    autoplaySpeed: 5500,
+    pauseOnHover: false,
+    cssEase: 'linear',
+    responsive: [
+      {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 980,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+
+      {
+        breakpoint: 375,
+        settings: {
+          slidesToShow: 1,
+          adaptiveHeight: false,
+        },
+      },
+    ],
+  };
+
+  return (
+    <div className='slider-container overflow-hidden'>
+      <Slider {...settingsSlide}>
+        {imagesSlide.map((image, index) => (
+          <div key={index}>
+            <Image src={image} alt='' width={300} height={300} className='rounded-md' />
+          </div>
+        ))}
+      </Slider>
+    </div>
+  );
+}
+
 export default function Home() {
   const [greeting, setGreeting] = useState<string>('　');
 
   useEffect(() => {
     const greetings = ['Hello!', 'Hi there!', 'Hey!', 'Greetings!', 'Howdy!', 'Salutations!', 'Nice to see you!', 'Hiya!'];
     setGreeting(greetings[Math.floor(Math.random() * greetings.length)] + ' 👋');
-  }, [])
+  }, []);
 
   return (
     <div className='sm:px-8 mt-16 sm:mt-32'>
@@ -153,7 +188,11 @@ export default function Home() {
           <SocialLinKGroup />
         </div>
       </Container>
-      <Photos />
+      <Container className='mt-12 md:mt-20'>
+        <div className='mx-auto'>
+          <SlideImages />
+        </div>
+      </Container>
       <Container className='mt-24 md:mt-28'>
         <div className='mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2'>
           <div className='flex flex-col gap-16'>
