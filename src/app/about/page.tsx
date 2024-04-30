@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import portraitImage from '@/images/photos/photo_1.jpeg';
+import portraitImage from '@/images/photos/avatar.jpeg';
 import { Container } from '@/components/molecules/Container';
 import clsx from 'clsx';
 
@@ -50,10 +50,10 @@ export default function About() {
             <SocialLink
               href='#'
               icon={() => (
-                <Icon icon="fa6-brands:x-twitter" className='h-6 w-auto text-zinc-500 dark:text-zince' />
+                <Icon icon="mdi:facebook" className='h-6 w-auto text-zinc-500 dark:text-zince' />
               )}
             >
-              Follow on X
+              Follow on Facebook
             </SocialLink>
             <SocialLink
               href='#'

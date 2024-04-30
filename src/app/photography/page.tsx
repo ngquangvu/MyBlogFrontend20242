@@ -281,8 +281,8 @@ export default function Photography() {
     height: '100%',
     objectFit: 'cover',
     objectPosition: 'center',
+    borderRadius: '0.35rem',
   };
-
 
   const popupCSS: SlotStyles = {
     container: {
