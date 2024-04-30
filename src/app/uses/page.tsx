@@ -44,7 +44,7 @@ export default function Uses() {
         <ToolsSection title='Development tools'>
           <Tool title='VS Code'>Best code editor I’ve ever used. I’ve tried a lot of them but I always come back to VS Code. It’s fast, has great extensions, and is just a pleasure to use.</Tool>
           <Tool title='iTerm2'>Simple but powerful terminal emulator. I like the split panes and the ability to have multiple tabs open at once.</Tool>
-          <Tool title='Insomnia'>Postman is great but I like Insomnia more. It’s simpler and faster and I like the design more.</Tool>
+          <Tool title='Insomnia'>Postman is great, but I prefer Insomnia. It’s simpler, faster, and I like its design.</Tool>
         </ToolsSection>
         <ToolsSection title='Design'>
           <Tool title='Figma'>Beside Adobe XD, Figma is the best design tool I’ve ever used. It’s fast, has great collaboration features, and is just a pleasure to use.</Tool>

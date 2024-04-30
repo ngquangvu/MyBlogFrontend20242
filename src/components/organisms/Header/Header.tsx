@@ -55,7 +55,7 @@ export function Header() {
                 </Popover.Button>
                 <h2 className='text-sm font-medium text-zinc-600 dark:text-zinc-400'>Navigation</h2>
               </div>
-              <nav className='mt-6'>
+              <div className='mt-6'>
                 <ul className='-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300'>
                   {NavItems.map((item, index) => (
                     <NavLink key={index} href={item.href}>
@@ -63,7 +63,7 @@ export function Header() {
                     </NavLink>
                   ))}
                 </ul>
-              </nav>
+              </div>
             </Popover.Panel>
           </Transition.Child>
         </Transition.Root>

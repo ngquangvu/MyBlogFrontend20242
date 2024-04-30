@@ -268,7 +268,7 @@ export default function Photography() {
   return (
     <Container className='sm:px-8 mt-16 sm:mt-32'>
       <div>
-        <SectionTitle title='Some photos I took' intro='I love taking photos everywhere I go. Here are some of my favorite shots.' />
+        <SectionTitle title='Some photos I took.' intro='I love taking photos everywhere I go. Here are some of my favorite shots.' />
         <div className='mt-16 sm:mt-20'>
           <Gallery thumbnailStyle={imageCSS} margin={4} images={images} onClick={handleClickImage} enableImageSelection={false} />
           <Lightbox slides={slides} styles={popupCSS} open={index >= 0} index={index} close={() => setIndex(-1)} />
