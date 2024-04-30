@@ -1,10 +1,12 @@
 'use client';
 
 import { ContainerInner, ContainerOuter } from '@/components/molecules/Container';
-import { ThemeToggle } from '@/components/molecules/ThemeToggle';
-import { clamp } from '@/utils';
 import { Popover, Transition } from '@headlessui/react';
-import { Fragment, useEffect, useRef } from 'react';
+import clsx from 'clsx';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import { Fragment } from 'react';
 
 const NavItems = [
   { href: '/', label: 'Home' },
@@ -14,6 +16,19 @@ const NavItems = [
   { href: '/photography', label: 'Photography' },
   { href: '/uses', label: 'Uses' },
 ];
+
+function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+  let isActive = usePathname() === href;
+
+  return (
+    <li>
+      <Link href={href} className={clsx('relative block px-3 py-2 transition', isActive ? 'text-teal-500 dark:text-teal-400' : 'hover:text-teal-500 dark:hover:text-teal-400')}>
+        {children}
+        {isActive && <span className='absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0' />}
+      </Link>
+    </li>
+  );
+}
 
 export function Header() {
   function MobileNavigation(props: React.ComponentPropsWithoutRef<typeof Popover>) {
@@ -34,7 +49,7 @@ export function Header() {
               <div className='flex flex-row-reverse items-center justify-between'>
                 <Popover.Button aria-label='Close menu' className='-m-1 p-1'>
                   <svg className='h-auto w-6 text-zinc-800 dark:bg-zinc-800/90 dark:text-zinc-200 ' xmlns='http://www.w3.org/2000/svg' width='768' height='768' viewBox='0 0 36 36'>
-                    <path d='m19.41 18l8.29-8.29a1 1 0 0 0-1.41-1.41L18 16.59l-8.29-8.3a1 1 0 0 0-1.42 1.42l8.3 8.29l-8.3 8.29A1 1 0 1 0 9.7 27.7l8.3-8.29l8.29 8.29a1 1 0 0 0 1.41-1.41Z'/>
+                    <path d='m19.41 18l8.29-8.29a1 1 0 0 0-1.41-1.41L18 16.59l-8.29-8.3a1 1 0 0 0-1.42 1.42l8.3 8.29l-8.3 8.29A1 1 0 1 0 9.7 27.7l8.3-8.29l8.29 8.29a1 1 0 0 0 1.41-1.41Z' />
                     <path fill='none' d='M0 0h36v36H0z' />
                   </svg>
                 </Popover.Button>
@@ -43,11 +58,9 @@ export function Header() {
               <nav className='mt-6'>
                 <ul className='-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300'>
                   {NavItems.map((item, index) => (
-                    <li key={index}>
-                      <a href={item.href} className='flex items-center gap-2 py-2 px-3 transition-colors hover:text-teal-500 dark:hover:text-teal-400'>
-                        {item.label}
-                      </a>
-                    </li>
+                    <NavLink key={index} href={item.href}>
+                      {item.label}
+                    </NavLink>
                   ))}
                 </ul>
               </nav>
@@ -68,11 +81,9 @@ export function Header() {
                 <nav className='w-full pointer-events-auto hidden md:block'>
                   <ul className='flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10'>
                     {NavItems.map((item, index) => (
-                      <li key={index}>
-                        <a href={item.href} className='flex items-center gap-2 py-2 px-3 transition-colors hover:text-teal-500 dark:hover:text-teal-400'>
-                          {item.label}
-                        </a>
-                      </li>
+                      <NavLink key={index} href={item.href}>
+                        {item.label}
+                      </NavLink>
                     ))}
                   </ul>
                 </nav>
@@ -86,9 +97,7 @@ export function Header() {
         <MobileNavigation className='pointer-events-auto md:hidden' />
       </div>
 
-      <div className='absolute right-2 top-0 pointer-events-auto py-4'>
-        {/* <ThemeToggle /> */}
-      </div>
+      <div className='absolute right-2 top-0 pointer-events-auto py-4'>{/* <ThemeToggle /> */}</div>
     </header>
   );
 }

@@ -50,10 +50,10 @@ export default function About() {
             <SocialLink
               href='#'
               icon={() => (
-                <Icon icon="fa6-brands:x-twitter" className='h-6 w-auto text-zinc-500 dark:text-zince' />
+                <Icon icon="mdi:facebook" className='h-6 w-auto text-zinc-500 dark:text-zince' />
               )}
             >
-              Follow on X
+              Follow on Facebook
             </SocialLink>
             <SocialLink
               href='#'

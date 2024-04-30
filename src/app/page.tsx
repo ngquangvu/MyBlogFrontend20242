@@ -1,6 +1,7 @@
 'use client';
 
 import { Icon } from '@iconify/react';
+// @ts-ignore
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -30,7 +31,7 @@ function SocialLink({
 function SocialLinKGroup() {
   return (
     <div className='mt-6 flex gap-6 h-6'>
-      <SocialLink href='#' aria-label='Follow on X' icon={() => <Icon icon='fa6-brands:x-twitter' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
+      <SocialLink href='#' aria-label='Follow on Facebook' icon={() => <Icon icon='mdi:facebook' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
       <SocialLink href='#' aria-label='Follow on Instagram' icon={() => <Icon icon='mdi:instagram' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
       <SocialLink href='#' aria-label='Follow on GitHub' icon={() => <Icon icon='mdi:github' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
       <SocialLink href='#' aria-label='Follow on LinkedIn' icon={() => <Icon icon='mdi:linkedin' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
@@ -91,17 +92,17 @@ function Resume() {
       start: 'Mar 2018',
       end: 'Nov 2021',
     },
-    {
-      company: 'HCMUTE University',
-      title: 'Student',
-      logo: logoHCMUTE,
-      start: 'Nov 2014',
-      end: 'May 2018',
-    },
+    // {
+    //   company: 'HCMUTE University',
+    //   title: 'Student',
+    //   logo: logoHCMUTE,
+    //   start: 'Nov 2014',
+    //   end: 'May 2018',
+    // },
   ];
 
   return (
-    <div className='rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40'>
+    <div className='rounded-lg border border-zinc-100 p-6 dark:border-zinc-700/40'>
       <h2 className='flex text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
         <div className='w-6'>
           <Icon icon='tabler:briefcase' className='h-6 w-6 text-zinc-500 flex-none' />

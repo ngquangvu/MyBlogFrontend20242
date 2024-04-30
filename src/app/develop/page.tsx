@@ -243,7 +243,7 @@ const platforms: Array<UsableItem> = [
 function UsableList({ items, title }: { items: Array<UsableItem>; title: string }) {
   return (
     <div className='w-full max-w-6xl space-y-2'>
-      <div className='relative border border-default px-6 pb-4 pt-8'>
+      <div className='relative rounded-md border border-default px-6 pb-4 pt-8'>
         <h3 className='absolute right-4 top-0 -translate-y-1/2 rounded-full border border-zinc-500 bg-white px-4 py-1 uppercase tracking-tight text-xs'>{title}</h3>
         <ul className='grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-6'>
           {items.map((item, index) => (
@@ -332,10 +332,10 @@ const customers: Array<CustomerItem> = [
 function CustomerList({ items }: { items: Array<UsableItem> }) {
   return (
     <div className='w-full max-w-6xl space-y-2'>
-      <div className='relative border border-default px-6 pb-6 pt-8'>
+      <div className='relative rounded-md border border-default px-6 pb-6 pt-8'>
         <ul className='grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-5'>
           {items.map((item, index) => (
-            <li key={index} className='px-2 md:px-5 flex justify-center'>
+            <li key={index} className='flex justify-center px-2 md:px-5'>
               <a className='flex justify-center h-20 w-full grayscale-[1] hover:grayscale-0 hover:scale-105 transition-all duration-150' target='_blank' href={item.url}>
                 <Image className='object-contain' src={item.icon} alt={item.title} width={180} height={180} />
                 <span className='hidden'>{item.title}</span>
