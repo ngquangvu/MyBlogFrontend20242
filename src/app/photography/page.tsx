@@ -235,30 +235,6 @@ const images: CustomImage[] = [
     original: 'images/gallery/photo_37.jpeg',
     width: 300,
     height: 200,
-  },
-  {
-    src: 'images/gallery/photo_38.jpeg',
-    original: 'images/gallery/photo_38.jpeg',
-    width: 300,
-    height: 200,
-  },
-  {
-    src: 'images/gallery/photo_39.jpeg',
-    original: 'images/gallery/photo_39.jpeg',
-    width: 300,
-    height: 200,
-  },
-  {
-    src: 'images/gallery/photo_41.jpeg',
-    original: 'images/gallery/photo_41.jpeg',
-    width: 300,
-    height: 200,
-  },
-  {
-    src: 'images/gallery/photo_42.jpeg',
-    original: 'images/gallery/photo_42.jpeg',
-    width: 300,
-    height: 200,
   }
 ];
 
@@ -294,7 +270,7 @@ export default function Photography() {
       <div>
         <SectionTitle title='Some photos I took' intro='I love taking photos everywhere I go. Here are some of my favorite shots.' />
         <div className='mt-16 sm:mt-20'>
-          <Gallery thumbnailStyle={imageCSS} margin={3} images={images} onClick={handleClickImage} enableImageSelection={false} />
+          <Gallery thumbnailStyle={imageCSS} margin={4} images={images} onClick={handleClickImage} enableImageSelection={false} />
           <Lightbox slides={slides} styles={popupCSS} open={index >= 0} index={index} close={() => setIndex(-1)} />
         </div>
       </div>

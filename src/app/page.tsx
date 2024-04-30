@@ -14,6 +14,9 @@ import logoFujinet from '@/images/logos/company/fujinet_jsc.png';
 import logoHCMUTE from '@/images/logos/company/hcmute.png';
 import { useEffect, useState } from 'react';
 import { Container } from '@/components/molecules/Container';
+import { Card } from '@/components/molecules/Card';
+import { formatDate } from '@/utils';
+import { Button } from '@/components/atoms/Button';
 
 function SocialLink({
   icon: Icon,
@@ -36,6 +39,24 @@ function SocialLinKGroup() {
       <SocialLink href='#' aria-label='Follow on GitHub' icon={() => <Icon icon='mdi:github' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
       <SocialLink href='#' aria-label='Follow on LinkedIn' icon={() => <Icon icon='mdi:linkedin' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
     </div>
+  );
+}
+
+function Newsletter() {
+  return (
+    <form action='/thank-you' className='rounded-lg border border-zinc-100 p-6 dark:border-zinc-700/40'>
+      <h2 className='flex text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
+        <Icon icon='tabler:mail' className='h-6 w-6 text-zinc-500 flex-none' />
+        <span className='ml-3'>Stay up to date</span>
+      </h2>
+      <p className='mt-2 text-sm text-zinc-600 dark:text-zinc-400'>Get notified when I publish something new, and unsubscribe at any time.</p>
+      <div className='mt-6 flex'>
+        <input type='email' className='h-10 min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10' placeholder='Email address' aria-label='Email address' required  />
+        <Button type='submit' className='h-10 ml-4 flex items-center  focus:ring-4 focus:ring-teal-500/10 dark:focus:ring-teal-400/10'>
+          Join
+        </Button>
+      </div>
+    </form>
   );
 }
 
@@ -172,6 +193,54 @@ function SlideImages() {
   );
 }
 
+interface Blog {
+  title: string;
+  description: string;
+  author: string;
+  date: string;
+}
+
+export interface BlogWithSlug extends Blog {
+  slug: string;
+}
+
+const blogs: BlogWithSlug[] = [
+  {
+    slug: 'crafting-a-design-system-for-a-multiplanetary-future',
+    author: 'Adam Wathan',
+    date: '2022-09-05',
+    title: 'Crafting a design system for a multiplanetary future',
+    description: 'Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.',
+  },
+  {
+    slug: 'introducing-animaginary',
+    author: 'Adam Wathan',
+    date: '2022-09-02',
+    title: 'Introducing Animaginary: High performance web animations',
+    description: 'When you’re building a website for a company as ambitious as Planetaria, you need to make an impression. I wanted people to visit our website and see animations that looked more realistic than reality itself.',
+  },
+  {
+    slug: 'rewriting-the-cosmos-kernel-in-rust',
+    author: 'Adam Wathan',
+    date: '2022-07-14',
+    title: 'Rewriting the cosmOS kernel in Rust',
+    description: 'When we released the first version of cosmOS last year, it was written in Go. Go is a wonderful programming language, but it’s been a while since I’ve seen an blog on the front page of Hacker News about rewriting some important tool in Go and I see blogs on there about rewriting things in Rust every single week.',
+  },
+];
+
+function Blog({ blog }: { blog: BlogWithSlug }) {
+  return (
+    <Card as='article'>
+      <Card.Title href={`/blogs/${blog.slug}`}>{blog.title}</Card.Title>
+      <Card.Eyebrow as='time' dateTime={blog.date} decorate>
+        {formatDate(blog.date)}
+      </Card.Eyebrow>
+      <Card.Description>{blog.description}</Card.Description>
+      <Card.Cta>Read blog</Card.Cta>
+    </Card>
+  );
+}
+
 export default function Home() {
   const [greeting, setGreeting] = useState<string>('　');
 
@@ -197,9 +266,12 @@ export default function Home() {
       <Container className='mt-24 md:mt-28'>
         <div className='mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2'>
           <div className='flex flex-col gap-16'>
-            <div className='space-y-6'>Blog...</div>
+            {blogs.map((blog) => (
+              <Blog key={blog.slug} blog={blog} />
+            ))}
           </div>
           <div className='space-y-10 lg:pl-16 xl:pl-24'>
+            <Newsletter />
             <Resume />
           </div>
         </div>
