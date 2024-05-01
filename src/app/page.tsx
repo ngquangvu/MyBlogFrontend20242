@@ -232,7 +232,7 @@ export default function Home() {
                 <SkeletonLine />
               </div>
             )}
-            {!postsLoading && posts && posts.data?.length > 0 ? (
+            {!postsLoading && posts && posts.data?.length > 0 && (
               <div className='space-y-10'>
                 <h2 className='text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Recent Posts</h2>
                 <div className='flex flex-col gap-16'>
@@ -241,7 +241,8 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-            ) : (
+            )}
+            {!postsLoading && !posts && (
               <div className='space-y-6'>
                 <h2 className='text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Recent Posts</h2>
                 <p className='text-base text-zinc-600 dark:text-zinc-400'>No posts found.</p>

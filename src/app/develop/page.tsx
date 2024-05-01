@@ -355,7 +355,7 @@ export default function Develop() {
   return (
     <Container className='sm:px-8 mt-16 sm:mt-28'>
       <div>
-        <SectionTitle title='Some of my skills.' intro='After dedicating considerable time to both learning and working, I’ve actively developed and achieved proficiency in a wide range of essential skills' />
+        <SectionTitle title='Some of my skills.' intro='After dedicating considerable time to both learning and working, I’ve actively developed and achieved proficiency in a wide range of essential skills.' />
         <div className='mt-16 sm:mt-20'>
           <ul className='grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {skills.map((skill, index) => (

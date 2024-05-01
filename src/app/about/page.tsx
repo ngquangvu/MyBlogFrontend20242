@@ -97,7 +97,7 @@ export default function About() {
             <SocialLink
               href='#'
               icon={() => (
-                <Icon icon="mdi:cellphone" className='h-6 w-auto text-zinc-500 dark:text-zince' />
+                <Icon icon="mdi:cellphone" className='h-5 w-auto ml-0.5 text-zinc-500 dark:text-zince' />
               )}
               className='mt-4'
             >

@@ -40,7 +40,7 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
 };
 
 Card.Description = function CardDescription({ children }: { children: React.ReactNode }) {
-  return <p className='relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400'>{children}</p>;
+  return <p className='relative z-10 mt-2 line-clamp-3 text-sm text-zinc-600 dark:text-zinc-400'>{children}</p>;
 };
 
 Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({

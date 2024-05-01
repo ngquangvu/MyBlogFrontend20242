@@ -9,10 +9,10 @@ export function usePosts(paramsURL?: PostsRequestParams) {
 
   // Setup params
   const params: PostsRequestParams = { ...defaultPostsRequestParams, ...paramsURL };
-  let searchParams = new URLSearchParams({ limit: params.limit.toString(), page: params.page.toString(), search: params.search, cate: params.cate, tag: params.tag, sort: params.sort, authorId: params.authorId });
+  let searchParams = setupParams(params)
 
   // Fetch data from API
-  const { data, error, isLoading } = useSWR(`http://localhost:3334/api/posts?` + searchParams.toString(), fetcher);
+  const { data, error, isLoading } = useSWR(process.env.NEXT_PUBLIC_API_URL + `posts?` + searchParams.toString(), fetcher);
 
   // Modify posts data
     let dataModified = { data: PostAPI.modifyPosts(data?.data) };
@@ -22,4 +22,17 @@ export function usePosts(paramsURL?: PostsRequestParams) {
     postsLoading: isLoading,
     isError: error,
   };
+}
+
+// Setup params for fetching posts
+function setupParams(params: PostsRequestParams) {
+  let searchParams = new URLSearchParams();
+  if (params.limit) searchParams.append('limit', params.limit.toString());
+  if (params.page) searchParams.append('page', params.page.toString());
+  if (params.search) searchParams.append('search', params.search);
+  if (params.cate) searchParams.append('cate', params.cate);
+  if (params.tag) searchParams.append('tag', params.tag);
+  if (params.sort) searchParams.append('sort', params.sort);
+  if (params.authorId) searchParams.append('authorId', params.authorId);
+  return searchParams;
 }
