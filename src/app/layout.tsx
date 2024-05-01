@@ -2,8 +2,8 @@ import { type Metadata } from 'next';
 
 import { Providers } from '@/app/providers';
 import { Layout } from '@/components/layouts/Layout';
-
 import '@/styles/tailwind.css';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: {

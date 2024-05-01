@@ -10,7 +10,7 @@ type Props = {
 export const PostCard = ({ className = '', post }: Props) => {
   return (
     <Card as="article">
-      <Card.Title href={`/blog/${post.slug}`}>
+      <Card.Title href={`/blog/${post.url}`}>
         {post.title}
       </Card.Title>
       <Card.Eyebrow as="time" dateTime={post.postedAtShort} decorate>

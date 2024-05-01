@@ -28,7 +28,7 @@ export function modifyPosts(postsRes: PostsResponseData | null) {
  * @param postRes
  * @returns modifiedPosts
 */
-function modifyPost(postRes: Post | null) {
+export function modifyPost(postRes: Post | null) {
   if (postRes) {
     // Create url from title and key, concat by '-'
     const url =

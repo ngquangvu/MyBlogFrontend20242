@@ -68,17 +68,17 @@ function CategoriesTags() {
         <div className='ml-9'>
           <ul>
             <li className='py-0.5'>
-              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500'>
+              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
                 Programming
               </a>
             </li>
             <li className='py-0.5'>
-              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500'>
+              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
                 Leadership
               </a>
             </li>
             <li className='py-0.5'>
-              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500'>
+              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
                 Product Design
               </a>
             </li>
@@ -93,17 +93,17 @@ function CategoriesTags() {
         <div className='ml-9'>
           <ul>
             <li className='py-0.5'>
-              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500'>
+              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
                 #programming
               </a>
             </li>
             <li className='py-0.5'>
-              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500'>
+              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
                 #leadership
               </a>
             </li>
             <li className='py-0.5'>
-              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500'>
+              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
                 #product_design
               </a>
             </li>
@@ -116,7 +116,7 @@ function CategoriesTags() {
 
 export default function Blog() {
   // Setup search param for posts
-  const paramsPosts: PostsRequestParams = { limit: 10, page: 1, search: '', cate: '', tag: '', sort: 'relevant', authorId: '' };
+  const paramsPosts: PostsRequestParams = { limit: 10, page: 1, search: '', cate: '', tag: '', sort: '', authorId: '' };
 
   // Get posts
   const { posts, postsLoading } = usePosts(paramsPosts);

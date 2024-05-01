@@ -1,32 +1,6 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
-@import './prism.css';
+@import './common.css';
+@import './html.content.css';
 @import 'tailwindcss/utilities';
 
-.ReactGridGallery_tile {
-  background: none !important;
-}
-
-.yarl__slide_image {
-  max-width: 100% !important;
-  max-height: 100% !important;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.slick-slide {
-  padding: 0 15px;
-}
-
-@media (max-width: 767px) {
-  .slick-slide {
-    padding: 0 10px;
-  }
-}
-
-@media (max-width: 450px) {
-  .slick-slide {
-    padding: 0 8px;
-  }
-}
