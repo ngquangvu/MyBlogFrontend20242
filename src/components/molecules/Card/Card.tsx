@@ -39,8 +39,8 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
   return <Component className='text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100'>{href ? <Card.Link href={href}>{children}</Card.Link> : children}</Component>;
 };
 
-Card.Description = function CardDescription({ children }: { children: React.ReactNode }) {
-  return <p className='relative z-10 mt-2 line-clamp-3 text-sm text-zinc-600 dark:text-zinc-400'>{children}</p>;
+Card.Description = function CardDescription({ className, children }: { className?: string; children: React.ReactNode }) {
+  return <p className={clsx(className, 'relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400')}>{children}</p>;
 };
 
 Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({

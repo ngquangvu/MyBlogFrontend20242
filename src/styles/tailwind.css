@@ -3,6 +3,10 @@
 @import './prism.css';
 @import 'tailwindcss/utilities';
 
+.ReactGridGallery_tile {
+  background: none !important;
+}
+
 .yarl__slide_image {
   max-width: 100% !important;
   max-height: 100% !important;

@@ -72,7 +72,7 @@ const skills: Array<FeatureItem> = [
 
 function Skill({ title, description, icon }: { title: string; description: string; icon: string }) {
   return (
-    <Card as='li' className='flex flex-col items-center first:rounded-t-lg md:[&:nth-child(2)]:rounded-tr-lg md:[&:nth-child(7)]:rounded-bl-lg md:first:rounded-tr-none lg:first:rounded-tr-none lg:[&:nth-child(2)]:rounded-tr-none lg:[&:nth-child(3)]:rounded-tr-lg lg:[&:nth-child(6)]:rounded-br-lg last:rounded-b-lg md:last:rounded-bl-none lg:last:rounded-bl-none gap-4 border border-default p-6 -mt-[1px] -ml-[1px]'>
+    <Card as='li' className='flex flex-col items-center first:rounded-t-xl md:[&:nth-child(2)]:rounded-tr-xl md:[&:nth-child(7)]:rounded-bl-xl md:first:rounded-tr-none lg:first:rounded-tr-none lg:[&:nth-child(2)]:rounded-tr-none lg:[&:nth-child(3)]:rounded-tr-xl lg:[&:nth-child(6)]:rounded-br-xl last:rounded-b-xl md:last:rounded-bl-none lg:last:rounded-bl-none gap-4 border border-default p-6 -mt-[1px] -ml-[1px]'>
       <div className='flex justify-center items-center h-12 w-12 rounded-full border border-zinc-400 p-2'>
         <Icon className='w-7 h-auto text-zinc-600' icon={icon} />
       </div>
@@ -246,7 +246,7 @@ const platforms: Array<UsableItem> = [
 function UsableList({ items, title }: { items: Array<UsableItem>; title: string }) {
   return (
     <div className='w-full max-w-6xl space-y-2'>
-      <div className='relative rounded-lg border border-default px-6 pb-4 pt-8'>
+      <div className='relative rounded-xl border border-default px-6 pb-4 pt-8'>
         <h3 className='absolute right-4 top-0 -translate-y-1/2 rounded-full border border-zinc-500 bg-white px-4 py-1 uppercase tracking-tight text-xs'>{title}</h3>
         <ul className='grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-6'>
           {items.map((item, index) => (
@@ -335,7 +335,7 @@ const customers: Array<CustomerItem> = [
 function CustomerList({ items }: { items: Array<UsableItem> }) {
   return (
     <div className='w-full max-w-6xl space-y-2'>
-      <div className='relative rounded-lg border border-default px-6 pb-6 pt-8'>
+      <div className='relative rounded-xl border border-default px-6 pb-6 pt-8'>
         <ul className='grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 md:grid-cols-5'>
           {items.map((item, index) => (
             <li key={index} className='flex justify-center px-4 md:px-5'>

@@ -15,13 +15,13 @@ function PostsSort() {
 
   return (
     <div className='flex space-x-6 md:space-x-10 bg-white'>
-      <a href='/blog' className={`${sort === null ? 'text-zinc-800' : ''} text-lg md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
+      <a href='/blog' className={`${sort === null ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-lg md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
         Recent
       </a>
-      <a href='/blog?sort=relevant' className={`${sort === 'relevant' ? 'text-zinc-800' : ''} text-lg md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
+      <a href='/blog?sort=relevant' className={`${sort === 'relevant' ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-lg md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
         Relevant
       </a>
-      <a href='/blog?sort=top' className={`${sort === 'top' ? 'text-zinc-800' : ''} text-lg md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
+      <a href='/blog?sort=top' className={`${sort === 'top' ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-lg md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
         Top
       </a>
     </div>
@@ -36,7 +36,7 @@ function PostsSearch() {
 
   return (
     <form action={`${currentPath}`} method='get' className='w-full max-w-52 relative text-gray-600'>
-      <input className='w-full h-10 min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10' type='search' name='search' placeholder='Search' />
+      <input className='w-full h-10 min-w-0 flex-auto appearance-none rounded-lg border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10' type='search' name='search' placeholder='Search' />
       <button type='submit' className='absolute right-0 top-0 mt-3 mr-4'>
         <Icon icon='tabler:search' className='text-gray-400 h-4 w-4 fill-current' />
       </button>
@@ -59,7 +59,7 @@ function SearchSortBar() {
 
 function CategoriesTags() {
   return (
-    <div className='flex flex-col space-y-5 rounded-lg border border-zinc-100 p-6 dark:border-zinc-700/40'>
+    <div className='flex flex-col space-y-5 rounded-xl border border-zinc-100 p-6 dark:border-zinc-700/40'>
       <div className=''>
         <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
           <Icon icon='tabler:category' className='h-6 w-6 text-zinc-500 flex-none' />

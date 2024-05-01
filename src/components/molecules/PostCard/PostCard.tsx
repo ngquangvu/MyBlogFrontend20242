@@ -16,7 +16,7 @@ export const PostCard = ({ className = '', post }: Props) => {
       <Card.Eyebrow as="time" dateTime={post.postedAtShort} decorate>
         {formatDate(post.postedAtShort || '')}
       </Card.Eyebrow>
-      <Card.Description>{post.summary}</Card.Description>
+      <Card.Description className='line-clamp-3'>{post.summary}</Card.Description>
       <Card.Cta>Read blog</Card.Cta>
     </Card>
   );
