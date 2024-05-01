@@ -17,12 +17,15 @@ import { Container } from '@/components/molecules/Container';
 import { Card } from '@/components/molecules/Card';
 import { SectionTitle } from '@/components/molecules/SectionTitle';
 import Image from 'next/image';
+import { getYearMonthAmountBetweenDates } from '@/utils';
 
 interface FeatureItem {
   description: string;
   icon: string;
   title: string;
 }
+
+const leaderYears = getYearMonthAmountBetweenDates(new Date('2021-02-01'), new Date());
 
 const skills: Array<FeatureItem> = [
   {
@@ -42,7 +45,7 @@ const skills: Array<FeatureItem> = [
   },
   {
     title: 'Leadership',
-    description: 'Take responsibility as a leader for 3.5 years, guiding and directing a development team to deliver high-quality software solutions',
+    description: 'Take responsibility as a leader for ' + leaderYears + ' years, have certificates in Scrum - Agile and Project Management',
     icon: 'fluent-mdl2:party-leader',
   },
   {
