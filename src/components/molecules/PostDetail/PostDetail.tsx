@@ -3,16 +3,16 @@
 import { useContext } from 'react'
 import { useRouter } from 'next/navigation'
 import { AppContext } from '@/app/providers'
-import { PostWithSlug } from '@/types/post'
 import { Container } from '@/components/molecules/Container'
 import { Prose } from '@/components/atoms/Prose'
 import { formatDate } from '@/utils'
 import { Icon } from '@iconify/react';
+import { Post } from '@/types/post'
 
 export function PostDetail({
   post
 }: {
-  post: PostWithSlug
+  post: Post
 }) {
   let router = useRouter()
   let { previousPathname } = useContext(AppContext)
@@ -37,11 +37,11 @@ export function PostDetail({
                 {post.title}
               </h1>
               <time
-                dateTime={post.date}
+                dateTime={post.postedAt}
                 className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
               >
                 <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
-                <span className="ml-3">{formatDate(post.date)}</span>
+                <span className="ml-3">{formatDate(post.postedAt || '')}</span>
               </time>
             </header>
             <Prose className="mt-8" data-mdx-content>

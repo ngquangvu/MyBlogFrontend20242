@@ -1,14 +1,16 @@
 'use client';
 
 import { PostDetail } from '@/components/molecules/PostDetail';
-import { PostWithSlug } from '@/types/post';
+import { Post } from '@/types/post';
 
-const dummy: PostWithSlug = {
-  author: 'Adam Wathan',
-  date: '2022-09-05',
+const dummy: Post = {
+  author: {
+    displayName: 'Adam Wathan',
+  },
+  postedAt: '2022-09-05',
   slug: 'crafting-a-design-system-for-a-multiplanetary-future',
   title: 'Crafting a design system for a multiplanetary future',
-  description: 'Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.',
+  summary: 'Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.',
   content: `
     Lorem markdownum, bracchia in redibam! Terque unda puppi nec, linguae posterior
     in utraque respicere candidus Mimasque formae; quae conantem cervice. Parcite

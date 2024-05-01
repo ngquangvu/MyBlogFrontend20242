@@ -7,18 +7,16 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Image, { type ImageProps } from 'next/image';
 import Link from 'next/link';
-import clsx from 'clsx';
 
 import logoCanvasAsia from '@/images/logos/company/canvas_asia.png';
 import logoFujinet from '@/images/logos/company/fujinet_jsc.png';
-import logoHCMUTE from '@/images/logos/company/hcmute.png';
 import { useEffect, useState } from 'react';
 import { Container } from '@/components/molecules/Container';
-import { Card } from '@/components/molecules/Card';
-import { formatDate } from '@/utils';
 import { Button } from '@/components/atoms/Button';
-import { PostWithSlug } from '@/types/post';
-import { PostCard } from '@/components/molecules/PostCard/PostCard';
+import { usePosts } from '@/hooks/usePost';
+import { Post, PostsRequestParams } from '@/types/post';
+import { PostCard } from '@/components/molecules/PostCard';
+import { SkeletonLine } from '@/components/molecules/SkeletonLine';
 
 function SocialLink({
   icon: Icon,
@@ -195,32 +193,15 @@ function SlideImages() {
   );
 }
 
-const posts: PostWithSlug[] = [
-  {
-    slug: 'crafting-a-design-system-for-a-multiplanetary-future',
-    author: 'Adam Wathan',
-    date: '2022-09-05',
-    title: 'Crafting a design system for a multiplanetary future',
-    description: 'Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.',
-  },
-  {
-    slug: 'introducing-animaginary',
-    author: 'Adam Wathan',
-    date: '2022-09-02',
-    title: 'Introducing Animaginary: High performance web animations',
-    description: 'When you’re building a website for a company as ambitious as Planetaria, you need to make an impression. I wanted people to visit our website and see animations that looked more realistic than reality itself.',
-  },
-  {
-    slug: 'rewriting-the-cosmos-kernel-in-rust',
-    author: 'Adam Wathan',
-    date: '2022-07-14',
-    title: 'Rewriting the cosmOS kernel in Rust',
-    description: 'When we released the first version of cosmOS last year, it was written in Go. Go is a wonderful programming language, but it’s been a while since I’ve seen an blog on the front page of Hacker News about rewriting some important tool in Go and I see posts on there about rewriting things in Rust every single week.',
-  },
-];
-
 export default function Home() {
+  // Set greeting
   const [greeting, setGreeting] = useState<string>('　');
+
+  // Setup search param for posts
+  const paramsPosts: PostsRequestParams = { limit: 3, page: 1, search: '', cate: '', tag: '', sort: '', authorId: '' };
+
+  // Get posts
+  const { posts, postsLoading } = usePosts(paramsPosts);
 
   useEffect(() => {
     const greetings = ['Hello!', 'Hi there!', 'Hey!', 'Greetings!', 'Howdy!', 'Salutations!', 'Nice to see you!', 'Hiya!'];
@@ -244,9 +225,28 @@ export default function Home() {
       <Container className='mt-24 md:mt-28'>
         <div className='mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2'>
           <div className='flex flex-col gap-16'>
-            {posts.map((post) => (
-              <PostCard key={post.slug} post={post} />
-            ))}
+            {postsLoading && (
+              <div className='space-y-6'>
+                <SkeletonLine />
+                <SkeletonLine />
+                <SkeletonLine />
+              </div>
+            )}
+            {!postsLoading && posts && posts.data?.length > 0 ? (
+              <div className='space-y-10'>
+                <h2 className='text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Recent Posts</h2>
+                <div className='flex flex-col gap-16'>
+                  {posts.data.map((post: Post, index: number) => (
+                    <PostCard key={index} post={post} />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className='space-y-6'>
+                <h2 className='text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Recent Posts</h2>
+                <p className='text-base text-zinc-600 dark:text-zinc-400'>No posts found.</p>
+              </div>
+            )}
           </div>
           <div className='space-y-10 lg:pl-16 xl:pl-24'>
             <Newsletter />
