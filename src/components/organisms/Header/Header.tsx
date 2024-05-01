@@ -5,6 +5,7 @@ import { Popover, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Icon } from '@iconify/react';
 
 import { Fragment } from 'react';
 
@@ -27,6 +28,19 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
         {isActive && <span className='absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0' />}
       </Link>
     </li>
+  );
+}
+
+function NavLinkMobile({ href, label }: { href: string; label: string }) {
+  let isActive = usePathname() === href;
+
+  return (
+    <Popover.Button as={Link} href={href} className='block'>
+      <div className={clsx('relative block px-3 py-2 transition', isActive ? 'text-teal-500 dark:text-teal-400' : 'hover:text-teal-500 dark:hover:text-teal-400')}>
+        {label}
+        {isActive && <span className='absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0' />}
+      </div>
+    </Popover.Button>
   );
 }
 
@@ -55,15 +69,13 @@ export function Header() {
                 </Popover.Button>
                 <h2 className='text-sm font-medium text-zinc-600 dark:text-zinc-400'>Navigation</h2>
               </div>
-              <nav className='mt-6'>
+              <div className='mt-6'>
                 <ul className='-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300'>
                   {NavItems.map((item, index) => (
-                    <NavLink key={index} href={item.href}>
-                      {item.label}
-                    </NavLink>
+                    <NavLinkMobile key={index} href={item.href} label={item.label} />
                   ))}
                 </ul>
-              </nav>
+              </div>
             </Popover.Panel>
           </Transition.Child>
         </Transition.Root>
@@ -72,7 +84,7 @@ export function Header() {
   }
 
   return (
-    <header className='relative w-full max-w-6xl py-5 m-auto'>
+    <header className='relative w-full max-w-6xl pt-5 pb-2 md:py-5 m-auto'>
       <div className='flex justify-center m-auto'>
         <ContainerOuter>
           <ContainerInner>
@@ -93,7 +105,10 @@ export function Header() {
         </ContainerOuter>
       </div>
 
-      <div className='block md:hidden px-4'>
+      <div className='flex justify-between items-center md:hidden px-4'>
+        <Link href='/'>
+          <Icon icon='ic:round-home' className='h-8 w-8 text-zinc-700 dark:text-zinc-200' />
+        </Link>
         <MobileNavigation className='pointer-events-auto md:hidden' />
       </div>
 

@@ -7,13 +7,16 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Image, { type ImageProps } from 'next/image';
 import Link from 'next/link';
-import clsx from 'clsx';
 
 import logoCanvasAsia from '@/images/logos/company/canvas_asia.png';
 import logoFujinet from '@/images/logos/company/fujinet_jsc.png';
-import logoHCMUTE from '@/images/logos/company/hcmute.png';
 import { useEffect, useState } from 'react';
 import { Container } from '@/components/molecules/Container';
+import { Button } from '@/components/atoms/Button';
+import { usePosts } from '@/hooks/usePost';
+import { Post, PostsRequestParams } from '@/types/post';
+import { PostCard } from '@/components/molecules/PostCard';
+import { SkeletonLine } from '@/components/molecules/SkeletonLine';
 
 function SocialLink({
   icon: Icon,
@@ -36,6 +39,24 @@ function SocialLinKGroup() {
       <SocialLink href='#' aria-label='Follow on GitHub' icon={() => <Icon icon='mdi:github' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
       <SocialLink href='#' aria-label='Follow on LinkedIn' icon={() => <Icon icon='mdi:linkedin' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
     </div>
+  );
+}
+
+function Newsletter() {
+  return (
+    <form action='/thank-you' className='rounded-lg border border-zinc-100 p-6 dark:border-zinc-700/40'>
+      <h2 className='flex text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
+        <Icon icon='tabler:mail' className='h-6 w-6 text-zinc-500 flex-none' />
+        <span className='ml-3'>Stay up to date</span>
+      </h2>
+      <p className='mt-2 text-sm text-zinc-600 dark:text-zinc-400'>Get notified when I publish something new, and unsubscribe at any time.</p>
+      <div className='mt-6 flex'>
+        <input type='email' className='h-10 min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10' placeholder='Email address' aria-label='Email address' required />
+        <Button type='submit' className='h-10 ml-4 flex items-center  focus:ring-4 focus:ring-teal-500/10 dark:focus:ring-teal-400/10'>
+          Join
+        </Button>
+      </div>
+    </form>
   );
 }
 
@@ -173,7 +194,14 @@ function SlideImages() {
 }
 
 export default function Home() {
+  // Set greeting
   const [greeting, setGreeting] = useState<string>('　');
+
+  // Setup search param for posts
+  const paramsPosts: PostsRequestParams = { limit: 3, page: 1, search: '', cate: '', tag: '', sort: '', authorId: '' };
+
+  // Get posts
+  const { posts, postsLoading } = usePosts(paramsPosts);
 
   useEffect(() => {
     const greetings = ['Hello!', 'Hi there!', 'Hey!', 'Greetings!', 'Howdy!', 'Salutations!', 'Nice to see you!', 'Hiya!'];
@@ -181,7 +209,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='sm:px-8 mt-16 sm:mt-32'>
+    <div className='sm:px-8 mt-16 sm:mt-28'>
       <Container>
         <div className='max-w-2xl'>
           <h1 className='text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100'>{greeting}</h1>
@@ -197,9 +225,32 @@ export default function Home() {
       <Container className='mt-24 md:mt-28'>
         <div className='mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2'>
           <div className='flex flex-col gap-16'>
-            <div className='space-y-6'>Blog...</div>
+            {postsLoading && (
+              <div className='space-y-6'>
+                <SkeletonLine />
+                <SkeletonLine />
+                <SkeletonLine />
+              </div>
+            )}
+            {!postsLoading && posts && posts.data?.length > 0 && (
+              <div className='space-y-10'>
+                <h2 className='text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Recent Posts</h2>
+                <div className='flex flex-col gap-16'>
+                  {posts.data.map((post: Post, index: number) => (
+                    <PostCard key={index} post={post} />
+                  ))}
+                </div>
+              </div>
+            )}
+            {!postsLoading && !posts && (
+              <div className='space-y-6'>
+                <h2 className='text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Recent Posts</h2>
+                <p className='text-base text-zinc-600 dark:text-zinc-400'>No posts found.</p>
+              </div>
+            )}
           </div>
           <div className='space-y-10 lg:pl-16 xl:pl-24'>
+            <Newsletter />
             <Resume />
           </div>
         </div>

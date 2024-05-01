@@ -7,6 +7,7 @@ import Link from 'next/link';
 import portraitImage from '@/images/photos/avatar.jpeg';
 import { Container } from '@/components/molecules/Container';
 import clsx from 'clsx';
+import { getYearMonthAmountBetweenDates } from '@/utils';
 
 function SocialLink({ className, href, children, icon: Icon }: { className?: string; href: string; icon: React.ComponentType<{ className?: string }>; children: React.ReactNode }) {
   return (
@@ -22,10 +23,12 @@ function SocialLink({ className, href, children, icon: Icon }: { className?: str
 }
 
 export default function About() {
+  const workYears = getYearMonthAmountBetweenDates(new Date('2018-03-08'), new Date());
+
   return (
-    <Container className='mt-16 sm:mt-32'>
+    <Container className='mt-16 sm:mt-28'>
       <div className='grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12'>
-        <div className='lg:pl-20'>
+        <div className='flex justify-center md:block lg:pl-20'>
           <div className='max-w-xs px-2.5 lg:max-w-none'>
             <Image src={portraitImage} alt='' sizes='(min-width: 1024px) 30rem, 20rem' className='aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800' />
           </div>
@@ -36,7 +39,7 @@ export default function About() {
             <br />A developer in<br/> Ho Chi Minh City.
           </h1>
           <div className='mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400'>
-            <p>I’m a full-stack developer with 6 years of experience. My journey in this field has been marked by a deep commitment to learning and mastering the latest technologies, and applying them to deliver high-quality software solutions.</p>
+            <p>I’m a full-stack developer with {workYears} years of experience. My journey in this field has been marked by a deep commitment to learning and mastering the latest technologies, and applying them to deliver high-quality software solutions.</p>
 
 <p>My passion for technology was ignited in my childhood, and it has only grown stronger over the years. This passion led me to pursue a degree in Information Technology from a reputable university. After my graduation, I embarked on my professional journey as a web developer in Ho Chi Minh city.</p>
 
@@ -94,7 +97,7 @@ export default function About() {
             <SocialLink
               href='#'
               icon={() => (
-                <Icon icon="mdi:cellphone" className='h-6 w-auto text-zinc-500 dark:text-zince' />
+                <Icon icon="mdi:cellphone" className='h-5 w-auto ml-0.5 text-zinc-500 dark:text-zince' />
               )}
               className='mt-4'
             >
