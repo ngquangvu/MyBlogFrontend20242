@@ -35,3 +35,17 @@ export function getYearMonthAmountBetweenDates(date1: Date, date2: Date) {
   const months = date2.getMonth() - date1.getMonth();
   return years + Math.round((months / 12) * 10) / 10;
 }
+
+
+// Append url param to the current url, if empty, remove the param
+export function appendUrlParam(key: string, value: string) {
+  const url = new URL(window.location.href);
+  const searchParams = new URLSearchParams(url.search);
+  if (value) {
+    searchParams.set(key, value);
+  } else {
+    searchParams.delete(key);
+  }
+  url.search = searchParams.toString();
+  return url.toString();
+}
