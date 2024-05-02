@@ -15,13 +15,13 @@ function PostsSort() {
 
   return (
     <div className='flex space-x-6 md:space-x-10 bg-white'>
-      <a href='/blog' className={`${sort === null ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-lg md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
+      <a href='/blog' className={`${sort === null ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
         Recent
       </a>
-      <a href='/blog?sort=relevant' className={`${sort === 'relevant' ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-lg md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
+      <a href='/blog?sort=relevant' className={`${sort === 'relevant' ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
         Relevant
       </a>
-      <a href='/blog?sort=top' className={`${sort === 'top' ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-lg md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
+      <a href='/blog?sort=top' className={`${sort === 'top' ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
         Top
       </a>
     </div>
@@ -59,8 +59,8 @@ function SearchSortBar() {
 
 function CategoriesTags() {
   return (
-    <div className='flex flex-col space-y-5 rounded-xl border border-zinc-100 p-6 dark:border-zinc-700/40'>
-      <div className=''>
+    <div className='flex flex-col space-y-5 rounded-xl border border-default dark:border-zinc-700/40'>
+      <div className='p-6'>
         <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
           <Icon icon='tabler:category' className='h-6 w-6 text-zinc-500 flex-none' />
           <span className='ml-3'>Categories</span>
@@ -85,7 +85,7 @@ function CategoriesTags() {
           </ul>
         </div>
       </div>
-      <div className='border-t pt-6'>
+      <div className='border-t border-default p-6'>
         <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
           <Icon icon='tabler:tag' className='h-6 w-6 text-zinc-500 flex-none' />
           <span className='ml-3'>Tags</span>
@@ -136,12 +136,12 @@ export default function Blog() {
         </div>
       )}
       {!postsLoading && (
-        <div className='flex flex-col-reverse md:flex-row space-x-0 md:space-x-16 mt-10 md:mt-16'>
-          <div className='md:border-l md:border-zinc-100  md:dark:border-zinc-700/40 md:pl-6 '>
-            <div className='flex max-w-3xl flex-col space-y-16'>
+        <div className='flex flex-col-reverse md:flex-row space-x-0 md:space-x-12 mt-4 md:mt-10'>
+          <div className='md:border-l md:border-default  md:dark:border-zinc-700/40 md:pl-6 '>
+            <div className='flex max-w-3xl flex-col space-y-16 overflow-hidden'>
               {posts && posts.data?.length > 0 && (
                 <div className='space-y-10'>
-                  <div className='flex flex-col gap-16'>
+                  <div className='flex flex-col gap-y-16 pr-6 pt-6'>
                     {posts.data.map((post: Post, index: number) => (
                       <PostTimeline key={index} post={post} />
                     ))}

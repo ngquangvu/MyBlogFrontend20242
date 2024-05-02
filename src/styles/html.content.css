@@ -9,6 +9,7 @@
 }
 
 .tiptap img {
+  border-radius: 0.75rem;
   object-fit: contain;
   margin: 20px 0;
 }
@@ -16,35 +17,46 @@
 .tiptap h1 {
   font-size: 2rem;
   line-height: 1.5;
+  color: #27272a;
+  margin: 0.5rem 0;
 }
 
 .tiptap h2 {
   font-size: 1.5rem;
   line-height: 1.5;
+  color: #27272a;
+  margin: 0.25rem 0;
 }
 
 .tiptap h3 {
   font-size: 1.25rem;
   line-height: 1.5;
+  color: #27272a;
+  margin: 0.25rem 0;
 }
 
 .tiptap h4 {
   font-size: 1rem;
   line-height: 1.5;
+  color: #27272a;
+  margin: 0.25rem 0;
 }
 
 .tiptap h5 {
   font-size: 0.75rem;
   line-height: 1.5;
+  color: #27272a;
+  margin: 0.25rem 0;
 }
 
 .tiptap p {
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.65;
+  color: #52525b;
 }
 
 .tiptap a {
-  color: #1e40af;
+  color: #14b8a6;
 }
 
 .tiptap ol,
@@ -52,6 +64,7 @@
 .tiptap menu {
   margin: 0.625rem 0;
   padding: 0 0 0 1.75rem;
+  color: #52525b;
 }
 
 .tiptap ol {
@@ -71,6 +84,8 @@
 .tiptap blockquote {
   width: fit-content;
   position: relative;
+  border-top-right-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
   background-color: #ebebeb;
   padding: 12px 24px;
   margin: 0.75rem 0;
@@ -101,7 +116,7 @@
 
 .tiptap pre {
   background: #161616;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   color: #fff;
   font-family: 'JetBrainsMono', monospace;
   padding: 2rem;
@@ -158,7 +173,7 @@
   }
 
   .tiptap pre code {
-    font-size: 1rem;
+    font-size: 0.85rem;
     line-height: 1.6;
     padding: 0;
   }

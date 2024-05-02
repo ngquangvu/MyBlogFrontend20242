@@ -44,7 +44,7 @@ function SocialLinKGroup() {
 
 function Newsletter() {
   return (
-    <form action='/thank-you' className='rounded-xl border border-zinc-100 p-6 dark:border-zinc-700/40'>
+    <form action='/thank-you' className='rounded-xl border border-default p-6 dark:border-zinc-700/40'>
       <h2 className='flex text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
         <Icon icon='tabler:mail' className='h-6 w-6 text-zinc-500 flex-none' />
         <span className='ml-3'>Stay up to date</span>
@@ -123,7 +123,7 @@ function Resume() {
   ];
 
   return (
-    <div className='rounded-xl border border-zinc-100 p-6 dark:border-zinc-700/40'>
+    <div className='rounded-xl border border-default p-6 dark:border-zinc-700/40'>
       <h2 className='flex text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
         <div className='w-6'>
           <Icon icon='tabler:briefcase' className='h-6 w-6 text-zinc-500 flex-none' />
