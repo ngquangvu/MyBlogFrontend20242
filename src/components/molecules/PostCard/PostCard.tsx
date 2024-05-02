@@ -10,13 +10,13 @@ type Props = {
 export const PostCard = ({ className = '', post }: Props) => {
   return (
     <Card as="article">
-      <Card.Title href={`/blog/${post.slug}`}>
+      <Card.Title href={`/blog/${post.url}`}>
         {post.title}
       </Card.Title>
       <Card.Eyebrow as="time" dateTime={post.postedAtShort} decorate>
         {formatDate(post.postedAtShort || '')}
       </Card.Eyebrow>
-      <Card.Description>{post.summary}</Card.Description>
+      <Card.Description className='line-clamp-3'>{post.summary}</Card.Description>
       <Card.Cta>Read blog</Card.Cta>
     </Card>
   );

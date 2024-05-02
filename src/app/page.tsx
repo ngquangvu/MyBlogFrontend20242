@@ -13,7 +13,7 @@ import logoFujinet from '@/images/logos/company/fujinet_jsc.png';
 import { useEffect, useState } from 'react';
 import { Container } from '@/components/molecules/Container';
 import { Button } from '@/components/atoms/Button';
-import { usePosts } from '@/hooks/usePost';
+import { usePosts } from '@/hooks/usePosts';
 import { Post, PostsRequestParams } from '@/types/post';
 import { PostCard } from '@/components/molecules/PostCard';
 import { SkeletonLine } from '@/components/molecules/SkeletonLine';
@@ -44,14 +44,14 @@ function SocialLinKGroup() {
 
 function Newsletter() {
   return (
-    <form action='/thank-you' className='rounded-lg border border-zinc-100 p-6 dark:border-zinc-700/40'>
+    <form action='/thank-you' className='rounded-xl border border-default p-6 dark:border-zinc-700/40'>
       <h2 className='flex text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
         <Icon icon='tabler:mail' className='h-6 w-6 text-zinc-500 flex-none' />
         <span className='ml-3'>Stay up to date</span>
       </h2>
       <p className='mt-2 text-sm text-zinc-600 dark:text-zinc-400'>Get notified when I publish something new, and unsubscribe at any time.</p>
       <div className='mt-6 flex'>
-        <input type='email' className='h-10 min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10' placeholder='Email address' aria-label='Email address' required />
+        <input type='email' className='h-10 min-w-0 flex-auto appearance-none rounded-lg border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10' placeholder='Email address' aria-label='Email address' required />
         <Button type='submit' className='h-10 ml-4 flex items-center  focus:ring-4 focus:ring-teal-500/10 dark:focus:ring-teal-400/10'>
           Join
         </Button>
@@ -123,7 +123,7 @@ function Resume() {
   ];
 
   return (
-    <div className='rounded-lg border border-zinc-100 p-6 dark:border-zinc-700/40'>
+    <div className='rounded-xl border border-default p-6 dark:border-zinc-700/40'>
       <h2 className='flex text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
         <div className='w-6'>
           <Icon icon='tabler:briefcase' className='h-6 w-6 text-zinc-500 flex-none' />
@@ -185,7 +185,7 @@ function SlideImages() {
       <Slider {...settingsSlide}>
         {imagesSlide.map((image, index) => (
           <div key={index}>
-            <Image src={image} alt='' width={300} height={300} className='rounded-md' />
+            <Image src={image} alt='' width={300} height={300} className='rounded-xl' />
           </div>
         ))}
       </Slider>

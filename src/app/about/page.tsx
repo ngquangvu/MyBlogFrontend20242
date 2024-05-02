@@ -90,7 +90,7 @@ export default function About() {
               icon={() => (
                 <Icon icon="mdi:email-outline" className='h-6 w-auto text-zinc-500 dark:text-zince' />
               )}
-              className='mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40'
+              className='mt-8 border-t border-default pt-8 dark:border-zinc-700/40'
             >
               nguyenquangvu.work@gmail.com
             </SocialLink>

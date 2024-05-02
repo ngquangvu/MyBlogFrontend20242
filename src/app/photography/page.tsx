@@ -257,7 +257,7 @@ export default function Photography() {
     height: '100%',
     objectFit: 'cover',
     objectPosition: 'center',
-    borderRadius: '0.35rem',
+    borderRadius: '0.65rem',
   };
 
   const popupCSS: SlotStyles = {
