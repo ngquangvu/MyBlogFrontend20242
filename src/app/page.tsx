@@ -17,6 +17,7 @@ import { usePosts } from '@/hooks/usePosts';
 import { Post, PostsRequestParams } from '@/types/post';
 import { PostCard } from '@/components/molecules/PostCard';
 import { SkeletonLine } from '@/components/molecules/SkeletonLine';
+import { SkeletonLines } from '@/components/molecules/SkeletonLines';
 
 function SocialLink({
   icon: Icon,
@@ -46,7 +47,9 @@ function Newsletter() {
   return (
     <form action='/thank-you' className='rounded-xl border border-default p-6 dark:border-zinc-700/40'>
       <h2 className='flex text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
-        <Icon icon='tabler:mail' className='h-6 w-6 text-zinc-500 flex-none' />
+        <div className='h-6 w-6'>
+          <Icon icon='tabler:mail' className='h-6 w-6 text-zinc-500 flex-none' />
+        </div>
         <span className='ml-3'>Stay up to date</span>
       </h2>
       <p className='mt-2 text-sm text-zinc-600 dark:text-zinc-400'>Get notified when I publish something new, and unsubscribe at any time.</p>
@@ -225,29 +228,22 @@ export default function Home() {
       <Container className='mt-24 md:mt-28'>
         <div className='mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2'>
           <div className='flex flex-col gap-16'>
-            {postsLoading && (
-              <div className='space-y-6'>
-                <SkeletonLine />
-                <SkeletonLine />
-                <SkeletonLine />
-              </div>
-            )}
-            {!postsLoading && posts && posts.data?.length > 0 && (
-              <div className='space-y-10'>
-                <h2 className='text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Recent Posts</h2>
+            <div className='space-y-10'>
+              <h2 className='text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Recent Posts</h2>
+              {postsLoading && (
+                <div className=''>
+                  <SkeletonLines />
+                </div>
+              )}
+              {!postsLoading && posts && posts.data?.length > 0 && (
                 <div className='flex flex-col gap-16'>
                   {posts.data.map((post: Post, index: number) => (
                     <PostCard key={index} post={post} />
                   ))}
                 </div>
-              </div>
-            )}
-            {!postsLoading && !posts && (
-              <div className='space-y-6'>
-                <h2 className='text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Recent Posts</h2>
-                <p className='text-base text-zinc-600 dark:text-zinc-400'>No posts found.</p>
-              </div>
-            )}
+              )}
+              {!postsLoading && !posts && <p className='text-base text-zinc-600 dark:text-zinc-400'>No posts found.</p>}
+            </div>
           </div>
           <div className='space-y-10 lg:pl-16 xl:pl-24'>
             <Newsletter />
