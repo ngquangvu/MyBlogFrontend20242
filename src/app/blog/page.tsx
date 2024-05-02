@@ -119,7 +119,7 @@ export default function Blog() {
       <div className='flex flex-col-reverse md:flex-row space-x-0 md:space-x-12 mt-4 md:mt-10'>
         {postsLoading && <div className='w-full mt-10'>{/* <SkeletonLines /> */}</div>}
         {!postsLoading && (
-          <div className='w-full md:border-l md:border-default  md:dark:border-zinc-700/40 md:pl-6 '>
+          <div className={`${paramSort === null && 'md:border-l md:-ml-[1px]'} w-full md:border-default  md:dark:border-zinc-700/40 md:pl-6 `}>
             <div className='flex max-w-3xl flex-col space-y-16 overflow-hidden'>
               {posts && posts.data?.length > 0 && (
                 <div className='space-y-10'>
