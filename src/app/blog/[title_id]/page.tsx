@@ -3,7 +3,7 @@
 import { Container } from '@/components/molecules/Container';
 import { PostDetail } from '@/components/molecules/PostDetail';
 import { SkeletonLine } from '@/components/molecules/SkeletonLine';
-import { usePost } from '@/hooks/usePost';
+import { usePost } from '@/hooks/usePosts';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Script from 'next/script';

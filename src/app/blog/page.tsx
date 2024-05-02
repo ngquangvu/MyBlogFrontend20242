@@ -3,13 +3,14 @@
 import { useSearchParams } from 'next/navigation';
 import { SimpleLayout } from '@/components/layouts/SimpleLayout';
 import { PostTimeline } from '@/components/molecules/PostTimeline';
-import { SkeletonLine } from '@/components/molecules/SkeletonLine';
-import { usePosts } from '@/hooks/usePost';
+import { usePosts } from '@/hooks/usePosts';
 import { Post, PostsRequestParams } from '@/types/post';
-import { SearchBox } from '@/components/molecules/SearchBox';
 import { Icon } from '@iconify/react';
 import { useEffect } from 'react';
 import { clamp } from '@/utils';
+import { useTags } from '@/hooks/useTags';
+import { SkeletonLines } from '@/components/molecules/SkeletonLines';
+import { useCategories } from '@/hooks/useCategories';
 
 function PostsSort() {
   const searchParams = useSearchParams();
@@ -59,80 +60,25 @@ function SearchSortBar() {
   );
 }
 
-function CategoriesTags() {
-  return (
-    <div className='flex flex-col space-y-5 rounded-xl border border-default dark:border-zinc-700/40'>
-      <div className='p-6'>
-        <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
-          <Icon icon='tabler:category' className='h-6 w-6 text-zinc-500 flex-none' />
-          <span className='ml-3'>Categories</span>
-        </h2>
-        <div className='ml-9'>
-          <ul>
-            <li className='py-0.5'>
-              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
-                Programming
-              </a>
-            </li>
-            <li className='py-0.5'>
-              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
-                Leadership
-              </a>
-            </li>
-            <li className='py-0.5'>
-              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
-                Product Design
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className='border-t border-default p-6'>
-        <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
-          <Icon icon='tabler:tag' className='h-6 w-6 text-zinc-500 flex-none' />
-          <span className='ml-3'>Tags</span>
-        </h2>
-        <div className='ml-9'>
-          <ul>
-            <li className='py-0.5'>
-              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
-                #programming
-              </a>
-            </li>
-            <li className='py-0.5'>
-              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
-                #leadership
-              </a>
-            </li>
-            <li className='py-0.5'>
-              <a href='#' className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
-                #product_design
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Blog() {
-  // Setup search param for posts
-  const paramsPosts: PostsRequestParams = { limit: 10, page: 1, search: '', cate: '', tag: '', sort: '', authorId: '' };
+  // Get categories
+  const { categories, categoriesLoading } = useCategories();
+
+  // Get tags
+  const { tags, tagsLoading } = useTags();
 
   // Get posts
+  const paramsPosts: PostsRequestParams = { limit: 10, page: 1, search: '', cate: '', tag: '', sort: '', authorId: '' };
   const { posts, postsLoading } = usePosts(paramsPosts);
-
-  const renderPosts: any = []
+  const renderPosts: any = [];
   if (posts && posts.data?.length > 0) {
     posts.data.forEach((post: Post) => {
       renderPosts.push(<PostTimeline key={post.id} post={post} />);
     });
   }
 
-
-   // Load more posts when scroll to bottom
-   useEffect(() => {
+  // Load more posts when scroll to bottom
+  useEffect(() => {
     const handleScroll = () => {
       let scrollY = clamp(window.scrollY, 0, document.body.scrollHeight - window.innerHeight);
       let scrollHeight = document.body.scrollHeight - window.innerHeight;
@@ -152,11 +98,7 @@ export default function Blog() {
       </div>
       {postsLoading && (
         <div className='min-h-[60vh]'>
-          <div className='space-y-6 mt-10'>
-            <SkeletonLine />
-            <SkeletonLine />
-            <SkeletonLine />
-          </div>
+          <SkeletonLines />
         </div>
       )}
       {!postsLoading && (
@@ -165,9 +107,7 @@ export default function Blog() {
             <div className='flex max-w-3xl flex-col space-y-16 overflow-hidden'>
               {posts && posts.data?.length > 0 && (
                 <div className='space-y-10'>
-                  <div className='flex flex-col gap-y-16 pr-6 pt-6'>
-                    {renderPosts}
-                  </div>
+                  <div className='flex flex-col gap-y-16 pr-6 pt-6'>{renderPosts}</div>
                 </div>
               )}
               {!posts && (
@@ -178,7 +118,53 @@ export default function Blog() {
             </div>
           </div>
           <div className='w-full max-w-xl md:max-w-72 mb-20 md:mb-0'>
-            <CategoriesTags />
+            <div className='flex flex-col space-y-5 rounded-xl border border-default dark:border-zinc-700/40'>
+              <div className='p-6'>
+                <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
+                  <Icon icon='tabler:category' className='h-6 w-6 text-zinc-500 flex-none' />
+                  <span className='ml-3'>Categories</span>
+                </h2>
+
+                <div className='ml-9'>
+                  {categoriesLoading && (
+                      <SkeletonLines />
+                  )}
+                  {categories && categories?.length > 0 && (
+                    <ul>
+                      {categories.map((cate, index) => (
+                        <li key={index} className='py-0.5'>
+                          <a href={'/blog?category=' + cate.slug} className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
+                            {cate.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+              <div className='border-t border-default p-6'>
+                <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
+                  <Icon icon='tabler:tag' className='h-6 w-6 text-zinc-500 flex-none' />
+                  <span className='ml-3'>Tags</span>
+                </h2>
+                <div className='ml-9'>
+                  {tagsLoading && (
+                      <SkeletonLines />
+                  )}
+                  {tags && tags?.length > 0 && (
+                    <ul>
+                      {tags.map((tag, index) => (
+                        <li key={index} className='py-0.5'>
+                          <a href={'/blog?tag=' + tag.slug} className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
+                            #{tag.slug}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

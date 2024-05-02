@@ -13,7 +13,7 @@ import logoFujinet from '@/images/logos/company/fujinet_jsc.png';
 import { useEffect, useState } from 'react';
 import { Container } from '@/components/molecules/Container';
 import { Button } from '@/components/atoms/Button';
-import { usePosts } from '@/hooks/usePost';
+import { usePosts } from '@/hooks/usePosts';
 import { Post, PostsRequestParams } from '@/types/post';
 import { PostCard } from '@/components/molecules/PostCard';
 import { SkeletonLine } from '@/components/molecules/SkeletonLine';
