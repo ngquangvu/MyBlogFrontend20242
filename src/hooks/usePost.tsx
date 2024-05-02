@@ -20,9 +20,12 @@ export function usePosts(paramsURL?: PostsRequestParams) {
 
   // Modify posts data
   let dataModified = { data: PostAPI.modifyPosts(data?.data) };
+  const totalCount = data?.data?.totalCount || 0;
+  console.log(totalCount);
 
   return {
     posts: dataModified.data,
+    totalCount,
     postsLoading: isLoading,
     isError: error,
   };

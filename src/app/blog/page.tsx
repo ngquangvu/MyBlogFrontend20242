@@ -8,6 +8,8 @@ import { usePosts } from '@/hooks/usePost';
 import { Post, PostsRequestParams } from '@/types/post';
 import { SearchBox } from '@/components/molecules/SearchBox';
 import { Icon } from '@iconify/react';
+import { useEffect } from 'react';
+import { clamp } from '@/utils';
 
 function PostsSort() {
   const searchParams = useSearchParams();
@@ -121,6 +123,28 @@ export default function Blog() {
   // Get posts
   const { posts, postsLoading } = usePosts(paramsPosts);
 
+  const renderPosts: any = []
+  if (posts && posts.data?.length > 0) {
+    posts.data.forEach((post: Post) => {
+      renderPosts.push(<PostTimeline key={post.id} post={post} />);
+    });
+  }
+
+
+   // Load more posts when scroll to bottom
+   useEffect(() => {
+    const handleScroll = () => {
+      let scrollY = clamp(window.scrollY, 0, document.body.scrollHeight - window.innerHeight);
+      let scrollHeight = document.body.scrollHeight - window.innerHeight;
+
+      if (scrollY + 200 > scrollHeight) {
+        console.log('scrolled to bottom');
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <SimpleLayout title='Writing on technology, software design, leadership, and more.' intro='My learning and work journey has been an investment in knowledge, and I’m excited to share it through writing about programming, leadership, product design, and beyond.  It’s fantastic to hear these resonate with you!'>
       <div className='mt-4 md:mt-8'>
@@ -142,9 +166,7 @@ export default function Blog() {
               {posts && posts.data?.length > 0 && (
                 <div className='space-y-10'>
                   <div className='flex flex-col gap-y-16 pr-6 pt-6'>
-                    {posts.data.map((post: Post, index: number) => (
-                      <PostTimeline key={index} post={post} />
-                    ))}
+                    {renderPosts}
                   </div>
                 </div>
               )}
