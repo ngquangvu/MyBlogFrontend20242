@@ -96,13 +96,13 @@ export default function Blog() {
       <div className='mt-4 md:mt-8'>
         <SearchSortBar />
       </div>
-      {postsLoading && (
-        <div className='min-h-[60vh]'>
-          <SkeletonLines />
-        </div>
-      )}
-      {!postsLoading && (
-        <div className='flex flex-col-reverse md:flex-row space-x-0 md:space-x-12 mt-4 md:mt-10'>
+      <div className='flex flex-col-reverse md:flex-row space-x-0 md:space-x-12 mt-4 md:mt-10'>
+        {postsLoading && (
+          <div className='w-full mt-10'>
+            <SkeletonLines />
+          </div>
+        )}
+        {!postsLoading && (
           <div className='md:border-l md:border-default  md:dark:border-zinc-700/40 md:pl-6 '>
             <div className='flex max-w-3xl flex-col space-y-16 overflow-hidden'>
               {posts && posts.data?.length > 0 && (
@@ -117,57 +117,58 @@ export default function Blog() {
               )}
             </div>
           </div>
-          <div className='w-full max-w-xl md:max-w-72 mb-20 md:mb-0'>
-            <div className='flex flex-col space-y-5 rounded-xl border border-default dark:border-zinc-700/40'>
-              <div className='p-6'>
-                <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
+        )}
+        <div className='w-full max-w-xl md:max-w-52 lg:max-w-64 mb-20 md:mb-0'>
+          <div className='flex flex-col rounded-xl border border-default dark:border-zinc-700/40'>
+            <div className='p-6'>
+              <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
+                <div className='h-6 w-6'>
                   <Icon icon='tabler:category' className='h-6 w-6 text-zinc-500 flex-none' />
-                  <span className='ml-3'>Categories</span>
-                </h2>
+                </div>
+                <span className='ml-3'>Categories</span>
+              </h2>
+              {categoriesLoading && <div className='mt-6'><SkeletonLines /></div>}
 
+              {categories && categories?.length > 0 && (
                 <div className='ml-9'>
-                  {categoriesLoading && (
-                      <SkeletonLines />
-                  )}
-                  {categories && categories?.length > 0 && (
-                    <ul>
-                      {categories.map((cate, index) => (
-                        <li key={index} className='py-0.5'>
-                          <a href={'/blog?category=' + cate.slug} className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
-                            {cate.title}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  <ul>
+                    {categories.map((cate, index) => (
+                      <li key={index} className='py-0.5'>
+                        <a href={'/blog?category=' + cate.slug} className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
+                          {cate.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-              <div className='border-t border-default p-6'>
-                <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
+              )}
+            </div>
+            <div className='border-t border-default p-6'>
+              <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
+                <div className='h-6 w-6'>
                   <Icon icon='tabler:tag' className='h-6 w-6 text-zinc-500 flex-none' />
-                  <span className='ml-3'>Tags</span>
-                </h2>
-                <div className='ml-9'>
-                  {tagsLoading && (
-                      <SkeletonLines />
-                  )}
-                  {tags && tags?.length > 0 && (
-                    <ul>
-                      {tags.map((tag, index) => (
-                        <li key={index} className='py-0.5'>
-                          <a href={'/blog?tag=' + tag.slug} className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
-                            #{tag.slug}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </div>
-              </div>
+                <span className='ml-3'>Tags</span>
+              </h2>
+              {tagsLoading && <div className='mt-6'><SkeletonLines /></div>}
+
+              {tags && tags?.length > 0 && (
+                <div className='ml-9'>
+                  <ul>
+                    {tags.map((tag, index) => (
+                      <li key={index} className='py-0.5'>
+                        <a href={'/blog?tag=' + tag.slug} className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
+                          #{tag.slug}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
-      )}
+      </div>
     </SimpleLayout>
   );
 }
