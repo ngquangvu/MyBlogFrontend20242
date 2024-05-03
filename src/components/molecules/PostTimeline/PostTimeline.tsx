@@ -1,6 +1,6 @@
 import { Post } from '@/types/post';
 import { Card } from '../Card';
-import { formatDate } from '@/utils';
+import { appendUrlParam, formatDate } from '@/utils';
 import Link from 'next/link';
 
 type Props = {
@@ -21,7 +21,7 @@ export const PostTimeline = ({ className = '', post }: Props) => {
           {post?.postTags &&
             post?.postTags.map((tag, index) => (
               <li key={index} className='text-sm font-medium text-zinc-800 hover:text-teal-500 transition-all duration-200'>
-                <Link href={`/blog?tag=${tag.slug}`}>
+                <Link href={appendUrlParam('tag', tag.slug)} scroll={false}>
                   <span className='text-teal-500 mr-0.5'>#</span>
                   {tag.slug}
                 </Link>
