@@ -20,7 +20,7 @@ export const PostCard = ({ className = '', post, isShowTags = false }: Props) =>
         {post.postTags &&
           post?.postTags?.length > 0 &&
           post?.postTags.map((tag) => (
-            <Link href={`/blog?tag=${tag.slug}`} key={tag.slug} className='text-xs text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
+            <Link href={`/blog?t=${tag.slug}`} key={tag.slug} className='text-xs text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
               <span className=''>#{tag.slug}</span>
             </Link>
           ))}

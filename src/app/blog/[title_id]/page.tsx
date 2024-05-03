@@ -24,18 +24,19 @@ export default function BlogPost() {
   const paramSort = 'relevant';
   const paramsPostsCate: PostsRequestParams = { limit: 5, page: 1, search: '', cate: paramCate || '', tag: '' || '', sort: paramSort || '', authorId: '' };
   const paramsPostsTag: PostsRequestParams = { limit: 5, page: 1, search: '', cate: '' || '', tag: paramTag || '', sort: paramSort || '', authorId: '' };
-  const { posts: postsCate, postsLoading: postsLoadingCate } = usePosts(paramsPostsCate);
-  const { posts: postsTag, postsLoading: postsLoadingTag } = usePosts(paramsPostsTag);
-
+  // Get posts cate
+  const { data: postsCate, isLoading: postsLoadingCate } = usePosts(paramsPostsCate);
+  // Get posts tag
+  const { data: postsTag, isLoading: postsLoadingTag } = usePosts(paramsPostsTag);
   // Merge related posts
   const relatedPosts: Post[] = [];
-  if (postsCate && postsCate.data?.length > 0) {
-    postsCate.data.forEach((post: Post) => {
+  if (postsCate && postsCate?.length > 0) {
+    postsCate.forEach((post: Post) => {
       relatedPosts.push(post);
     });
   }
-  if (postsTag && postsTag.data?.length > 0) {
-    postsTag.data.forEach((post: Post) => {
+  if (postsTag && postsTag?.length > 0) {
+    postsTag.forEach((post: Post) => {
       relatedPosts.push(post);
     });
   }

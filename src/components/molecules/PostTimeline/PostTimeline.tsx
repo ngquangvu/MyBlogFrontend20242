@@ -21,7 +21,7 @@ export const PostTimeline = ({ className = '', post }: Props) => {
           {post?.postTags &&
             post?.postTags.map((tag, index) => (
               <li key={index} className='text-sm font-medium text-zinc-800 hover:text-teal-500 transition-all duration-200'>
-                <Link href={appendUrlParam('tag', tag.slug)} scroll={false}>
+                <Link href={appendUrlParam('t', tag.slug)} scroll={false}>
                   <span className='text-teal-500 mr-0.5'>#</span>
                   {tag.slug}
                 </Link>

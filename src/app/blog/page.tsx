@@ -13,10 +13,10 @@ import { SkeletonLines } from '@/components/molecules/SkeletonLines';
 export default function Blog() {
   // Get search params
   const searchParams = useSearchParams();
-  const paramSort = searchParams.get('sort');
-  const paramSearch = searchParams.get('search');
-  const paramCate = searchParams.get('category');
-  const paramTag = searchParams.get('tag');
+  const paramSort = searchParams.get('s');
+  const paramSearch = searchParams.get('q');
+  const paramCate = searchParams.get('c');
+  const paramTag = searchParams.get('t');
 
   // Get posts
   const paramsPosts: PostsRequestParams = { limit: 10, page: 1, search: paramSearch || '', cate: paramCate || '', tag: paramTag || '', sort: paramSort || '', authorId: '' };

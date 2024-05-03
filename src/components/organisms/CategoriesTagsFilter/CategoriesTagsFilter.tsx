@@ -9,8 +9,8 @@ import { useSearchParams } from 'next/navigation';
 export function CategoriesTagsFilter() {
   // Get search params
   const searchParams = useSearchParams();
-  const paramCate = searchParams.get('category');
-  const paramTag = searchParams.get('tag');
+  const paramCate = searchParams.get('c');
+  const paramTag = searchParams.get('t');
 
   // Get categories
   const { categories, categoriesLoading } = useCategories();
@@ -38,14 +38,14 @@ export function CategoriesTagsFilter() {
             <ul>
               {paramCate && (
                 <li className='py-0.5'>
-                  <Link href={appendUrlParam('category', '')} scroll={false} className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
+                  <Link href={appendUrlParam('c', '')} scroll={false} className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
                     All
                   </Link>
                 </li>
               )}
               {categories.map((cate, index) => (
                 <li key={index} className='py-0.5'>
-                  <Link href={appendUrlParam('category', cate.slug)} scroll={false} className={`${paramCate === cate.slug && 'font-bold pointer-events-none'} text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200`}>
+                  <Link href={appendUrlParam('c', cate.slug)} scroll={false} className={`${paramCate === cate.slug && 'font-bold pointer-events-none'} text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200`}>
                     {cate.title}
                   </Link>
                 </li>
@@ -72,14 +72,14 @@ export function CategoriesTagsFilter() {
             <ul>
               {paramTag && (
                 <li className='py-0.5'>
-                  <Link href={appendUrlParam('tag', '')} scroll={false} className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
+                  <Link href={appendUrlParam('t', '')} scroll={false} className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
                     #all
                   </Link>
                 </li>
               )}
               {tags.map((tag, index) => (
                 <li key={index} className='py-0.5'>
-                  <Link href={appendUrlParam('tag', tag.slug)} scroll={false} className={`${paramTag === tag.slug && 'font-bold pointer-events-none'} text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200`}>
+                  <Link href={appendUrlParam('t', tag.slug)} scroll={false} className={`${paramTag === tag.slug && 'font-bold pointer-events-none'} text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200`}>
                     #{tag.slug}
                   </Link>
                 </li>
