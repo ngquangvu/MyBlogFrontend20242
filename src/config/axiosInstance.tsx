@@ -17,8 +17,8 @@ export const errorResponse = {
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:3334/api/',
-  withCredentials: false,
-  headers: requestHeaders
+  withCredentials: true,
+  // headers: requestHeaders
 });
 
 axiosInstance.interceptors.response.use(
