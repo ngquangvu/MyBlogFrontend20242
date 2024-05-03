@@ -49,5 +49,5 @@ export function appendUrlParam(key: string, value: string) {
     url.search = searchParams.toString();
     return url.toString();
   }
-  return '';
+  return '/';
 }
