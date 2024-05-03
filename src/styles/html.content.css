@@ -5,12 +5,12 @@
 
 .tiptap {
   width: 100%;
-  min-height: 400px;
+  min-height: 200px;
 }
 
 .tiptap img {
   border-radius: 0.75rem;
-  object-fit: contain;
+  object-fit: cover;
   margin: 20px 0;
 }
 
@@ -112,14 +112,17 @@
   width: 100%;
   max-width: 800px;
   height: 400px;
+  border-radius: 0.75rem;
 }
 
 .tiptap pre {
+  overflow-x: auto;
   background: #161616;
   border-radius: 0.75rem;
   color: #fff;
   font-family: 'JetBrainsMono', monospace;
-  padding: 2rem;
+  padding: 1.5rem;
+  margin: 1rem auto;
 }
 
 .tiptap pre code {
@@ -170,6 +173,10 @@
 
   .tiptap li {
     margin: 0.3rem 0;
+  }
+
+  .tiptap pre {
+    padding: 1rem;
   }
 
   .tiptap pre code {

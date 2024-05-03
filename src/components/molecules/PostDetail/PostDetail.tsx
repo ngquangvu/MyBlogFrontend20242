@@ -17,6 +17,8 @@ import scss from 'highlight.js/lib/languages/scss';
 import css from 'highlight.js/lib/languages/css';
 import dust from 'highlight.js/lib/languages/dust';
 import n1ql from 'highlight.js/lib/languages/n1ql';
+import Link from 'next/link';
+import { PostCard } from '../PostCard';
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('typescript', typescript);
 hljs.registerLanguage('php', php);
@@ -27,7 +29,7 @@ hljs.registerLanguage('css', css);
 hljs.registerLanguage('dust', dust);
 hljs.registerLanguage('n1ql', n1ql);
 
-export function PostDetail({ post }: { post: Post }) {
+export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: Post[] }) {
   let router = useRouter();
   let { previousPathname } = useContext(AppContext);
 
@@ -52,6 +54,15 @@ export function PostDetail({ post }: { post: Post }) {
             <article>
               <header className='flex flex-col'>
                 <h1 className='mt-6 text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100'>{post.title}</h1>
+                <div className='flex flex-wrap gap-4 mt-4'>
+                  {post.postTags &&
+                    post?.postTags?.length > 0 &&
+                    post?.postTags.map((tag) => (
+                      <Link href={`/blog?tag=${tag.slug}`} key={tag.slug} className='text-base text-zinc-700 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
+                        <span className='text-teal-500'>#</span>{tag.slug}
+                      </Link>
+                    ))}
+                </div>
                 <time dateTime={post.postedAtShort} className='order-first flex items-center text-base text-zinc-400 dark:text-zinc-500'>
                   <span className='h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500' />
                   <span className='ml-3'>{post.postedAt}</span>
@@ -63,6 +74,17 @@ export function PostDetail({ post }: { post: Post }) {
             </article>
           </div>
         </div>
+
+        {relatedPosts && relatedPosts?.length > 0 && (
+          <div className='mx-auto max-w-3xl'>
+            <h2 className='mt-24 mb-12 text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Related Posts</h2>
+            <div className='flex flex-col gap-16'>
+              {relatedPosts.map((post: Post, index: number) => (
+                <PostCard key={index} post={post} isShowTags={true} />
+              ))}
+            </div>
+          </div>
+        )}
       </Container>
     </>
   );

@@ -21,6 +21,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-grid-gallery": "^1.0.1-alpha.0",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-query": "^3.39.3",
     "react-slick": "^0.30.2",
     "recoil": "^0.7.7",

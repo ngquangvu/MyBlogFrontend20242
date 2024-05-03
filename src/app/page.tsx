@@ -19,7 +19,11 @@ export default function Home() {
   const paramsPosts: PostsRequestParams = { limit: 3, page: 1, search: '', cate: '', tag: '', sort: '', authorId: '' };
 
   // Get posts
-  const { posts, postsLoading } = usePosts(paramsPosts);
+  const { data: posts,
+    isLoading,
+    size,
+    setSize,
+    hasMore } = usePosts(paramsPosts);
 
   useEffect(() => {
     const greetings = ['Hello!', 'Hi there!', 'Hey!', 'Greetings!', 'Howdy!', 'Salutations!', 'Nice to see you!', 'Hiya!'];
@@ -45,19 +49,19 @@ export default function Home() {
           <div className='flex flex-col gap-16'>
             <div className='space-y-10'>
               <h2 className='text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Recent Posts</h2>
-              {postsLoading && (
+              {isLoading && (
                 <div className=''>
                   <SkeletonLines />
                 </div>
               )}
-              {!postsLoading && posts && posts.data?.length > 0 && (
+              {!isLoading && posts && posts?.length > 0 && (
                 <div className='flex flex-col gap-16'>
-                  {posts.data.map((post: Post, index: number) => (
+                  {posts.map((post: Post, index: number) => (
                     <PostCard key={index} post={post} />
                   ))}
                 </div>
               )}
-              {!postsLoading && !posts && <p className='text-base text-zinc-600 dark:text-zinc-400'>No posts found.</p>}
+              {!isLoading && !posts && <p className='text-base text-zinc-600 dark:text-zinc-400'>No posts found.</p>}
             </div>
           </div>
           <div className='space-y-10 lg:pl-16 xl:pl-24'>

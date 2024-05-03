@@ -5,43 +5,27 @@ import { SimpleLayout } from '@/components/layouts/SimpleLayout';
 import { PostTimeline } from '@/components/molecules/PostTimeline';
 import { usePosts } from '@/hooks/usePosts';
 import { Post, PostsRequestParams } from '@/types/post';
-import { useEffect } from 'react';
-import { clamp } from '@/utils';
 import { SearchSortBar } from '@/components/organisms/SearchSortBar';
 import { CategoriesTagsFilter } from '@/components/organisms/CategoriesTagsFilter';
-
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { SkeletonLines } from '@/components/molecules/SkeletonLines';
 
 export default function Blog() {
   // Get search params
   const searchParams = useSearchParams();
-  const paramSort = searchParams.get('sort');
-  const paramSearch = searchParams.get('search');
-  const paramCate = searchParams.get('category');
-  const paramTag = searchParams.get('tag');
+  const paramSort = searchParams.get('s');
+  const paramSearch = searchParams.get('q');
+  const paramCate = searchParams.get('c');
+  const paramTag = searchParams.get('t');
 
   // Get posts
   const paramsPosts: PostsRequestParams = { limit: 10, page: 1, search: paramSearch || '', cate: paramCate || '', tag: paramTag || '', sort: paramSort || '', authorId: '' };
-  const { posts, postsLoading } = usePosts(paramsPosts);
-  const renderPosts: any = [];
-  if (posts && posts.data?.length > 0) {
-    posts.data.forEach((post: Post) => {
-      renderPosts.push(<PostTimeline key={post.id} post={post} />);
-    });
-  }
 
-  // Load more posts when scroll to bottom
-  useEffect(() => {
-    const handleScroll = () => {
-      let scrollY = clamp(window.scrollY, 0, document.body.scrollHeight - window.innerHeight);
-      let scrollHeight = document.body.scrollHeight - window.innerHeight;
-
-      if (scrollY + 200 > scrollHeight) {
-        console.log('scrolled to bottom');
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const { data: posts,
+    isLoading,
+    size,
+    setSize,
+    hasMore } = usePosts(paramsPosts);
 
   return (
     <SimpleLayout title='Writing on technology, software design, leadership, and more.' intro='My learning and work journey has been an investment in knowledge, and I’m excited to share it through writing about programming, leadership, product design, and beyond.  It’s fantastic to hear these resonate with you!'>
@@ -49,19 +33,39 @@ export default function Blog() {
         <SearchSortBar />
       </div>
       <div className='flex flex-col-reverse md:flex-row space-x-0 md:space-x-12 mt-4 md:mt-10'>
-        {postsLoading && <div className='w-full mt-10'>{/* <SkeletonLines /> */}</div>}
-        {!postsLoading && (
+        {isLoading && <div className='w-full mt-2'><SkeletonLines /></div>}
+        {!isLoading && (
           <div className={`${paramSort === null && 'md:border-l md:-ml-[1px]'} w-full md:border-default  md:dark:border-zinc-700/40 md:pl-6 `}>
             <div className='flex max-w-3xl flex-col space-y-16 overflow-hidden'>
-              {posts && posts.data?.length > 0 && (
-                <div className='space-y-10'>
-                  <div className='flex flex-col gap-y-16 pr-6 py-6'>{renderPosts}</div>
+              {posts && posts?.length > 0 ? (
+                <InfiniteScroll
+                  dataLength={posts?.length}
+                  next={() => {
+                    setSize(size + 1);
+                  }}
+                  hasMore={hasMore}
+                  loader={<div className='my-12'><SkeletonLines /></div>}
+                  endMessage={<></>}
+                >
+                  <div className='space-y-10'>
+                    <div className='flex flex-col gap-y-16 pr-6 py-6'>
+                      {posts?.map((post: Post) => (
+                        <PostTimeline key={post.id} post={post} />
+                      ))}
+                    </div>
+                  </div>
+                </InfiniteScroll>
+              ) : (
+                <div className='space-y-6'>
+                  <div className='w-full'>
+                    <p className='md:ml-5 text-center md:text-left text-base text-zinc-600 dark:text-zinc-400'>No posts found matching your search or filter criteria.</p>
+                  </div>
                 </div>
               )}
               {!posts && (
                 <div className='space-y-6'>
                   <div className='w-full'>
-                    <p className='ml-5 text-base text-zinc-600 dark:text-zinc-400'>No posts found.</p>
+                    <p className='md:ml-5 text-center md:text-left text-base text-zinc-600 dark:text-zinc-400'>No posts found matching your search or filter criteria.</p>
                   </div>
                 </div>
               )}

@@ -1,26 +1,23 @@
-import { Post, PostsResponseData } from '@/types/post';
+import { Post } from '@/types/post';
 
 /**
  * Modify posts response data
  * @param postsRes
  * @returns modifiedPosts
 */
-export function modifyPosts(postsRes: PostsResponseData | null) {
-  let modifiedPosts: PostsResponseData | null = null;
+export function modifyPosts(posts: Post[]) {
+  let modifiedPosts: Post[] = [];
 
-  if (postsRes && postsRes.data && postsRes.data.length > 0) {
-    let posts: Post[] = [];
-    postsRes.data.forEach((post: Post) => {
+  if (posts && posts.length > 0) {
+  posts.forEach((post: Post) => {
       const modifiedPost: Post | null = modifyPost(post);
       if (modifiedPost) {
-        posts.push(modifiedPost);
+        modifiedPosts.push(modifiedPost);
       }
     });
-
-    modifiedPosts = { ...postsRes, data: posts };
     return modifiedPosts;
   }
-  return null;
+  return [];
 }
 
 /**
@@ -28,7 +25,7 @@ export function modifyPosts(postsRes: PostsResponseData | null) {
  * @param postRes
  * @returns modifiedPosts
 */
-export function modifyPost(postRes: Post | null) {
+export function modifyPost(postRes: Post) {
   if (postRes) {
     // Create url from title and key, concat by '-'
     const url =

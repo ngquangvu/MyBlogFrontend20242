@@ -1,8 +1,8 @@
 import { appendUrlParam } from '@/utils';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export function SearchSortBar() {
   return (
@@ -15,17 +15,29 @@ export function SearchSortBar() {
 
 function PostsSort() {
   const searchParams = useSearchParams();
-  const sort = searchParams.get('sort');
+  const sort = searchParams.get('s');
+  const search = searchParams.get('q');
+  const cate = searchParams.get('c');
+  const tag = searchParams.get('t');
 
+  const [recentLink, setRecentLink] = useState('');
+  const [relevantLink, setRelevantLink] = useState('');
+  const [topLink, setTopLink] = useState('');
+
+  useEffect(() => {
+    setRecentLink(appendUrlParam('s', ''));
+    setRelevantLink(appendUrlParam('s', 'relevant'));
+    setTopLink(appendUrlParam('s', 'top'));
+  }, [search, cate, tag]);
   return (
     <div className='flex space-x-6 md:space-x-10 bg-white'>
-      <Link href={appendUrlParam('sort', '')} scroll={false} className={`${sort === null ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
+      <Link href={recentLink} scroll={false} className={`${sort === null ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
         Recent
       </Link>
-      <Link href={appendUrlParam('sort', 'relevant')} scroll={false} className={`${sort === 'relevant' ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
+      <Link href={relevantLink} scroll={false} className={`${sort === 'relevant' ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
         Relevant
       </Link>
-      <Link href={appendUrlParam('sort', 'top')} scroll={false} className={`${sort === 'top' ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
+      <Link href={topLink} scroll={false} className={`${sort === 'top' ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
         Top
       </Link>
     </div>
@@ -35,7 +47,7 @@ function PostsSort() {
 function PostsSearch() {
   // get search param from url
   const searchParams = useSearchParams();
-  const paramSearch = searchParams.get('search');
+  const paramSearch = searchParams.get('q');
 
   const [value, setValue] = useState('');
   const router = useRouter();
@@ -47,7 +59,7 @@ function PostsSearch() {
   };
 
   const handleSubmit = () => {
-    router.push(appendUrlParam('search', value), { scroll: false });
+    router.push(appendUrlParam('q', value), { scroll: false });
   };
 
   return (
@@ -58,7 +70,7 @@ function PostsSearch() {
           setValue(e.target.value);
         }}
         onKeyDown={handleChange}
-        className='w-full h-10 min-w-0 pl-3 pr-8 py-[calc(theme(spacing.2)-1px)]  flex-auto appearance-none rounded-lg border border-zinc-900/10 bg-white shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10'
+        className='w-full h-10 min-w-0 pl-3 pr-8 py-[calc(theme(spacing.2)-1px)]  flex-auto appearance-none rounded-lg border border-zinc-900/10 bg-white shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10'
         type='search'
         name='search'
         placeholder='Search'
