@@ -112,6 +112,7 @@
   width: 100%;
   max-width: 800px;
   height: 400px;
+  border-radius: 0.75rem;
 }
 
 .tiptap pre {
