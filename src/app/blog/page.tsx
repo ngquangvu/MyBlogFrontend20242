@@ -37,7 +37,7 @@ export default function Blog() {
         {!isLoading && (
           <div className={`${paramSort === null && 'md:border-l md:-ml-[1px]'} w-full md:border-default  md:dark:border-zinc-700/40 md:pl-6 `}>
             <div className='flex max-w-3xl flex-col space-y-16 overflow-hidden'>
-              {posts && posts?.length > 0 && (
+              {posts && posts?.length > 0 ? (
                 <InfiniteScroll
                   dataLength={posts?.length}
                   next={() => {
@@ -45,7 +45,6 @@ export default function Blog() {
                   }}
                   hasMore={hasMore}
                   loader={<div className='my-12'><SkeletonLines /></div>}
-                  // loader={<></>}
                   endMessage={<></>}
                 >
                   <div className='space-y-10'>
@@ -56,11 +55,17 @@ export default function Blog() {
                     </div>
                   </div>
                 </InfiniteScroll>
+              ) : (
+                <div className='space-y-6'>
+                  <div className='w-full'>
+                    <p className='md:ml-5 text-center md:text-left text-base text-zinc-600 dark:text-zinc-400'>No posts found matching your search or filter criteria.</p>
+                  </div>
+                </div>
               )}
               {!posts && (
                 <div className='space-y-6'>
                   <div className='w-full'>
-                    <p className='ml-5 text-base text-zinc-600 dark:text-zinc-400'>No posts found.</p>
+                    <p className='md:ml-5 text-center md:text-left text-base text-zinc-600 dark:text-zinc-400'>No posts found matching your search or filter criteria.</p>
                   </div>
                 </div>
               )}

@@ -58,8 +58,8 @@ export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: P
                   {post.postTags &&
                     post?.postTags?.length > 0 &&
                     post?.postTags.map((tag) => (
-                      <Link href={`/blog?t=${tag.slug}`} key={tag.slug} className='text-base text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
-                        <span className=''>#{tag.slug}</span>
+                      <Link href={`/blog?tag=${tag.slug}`} key={tag.slug} className='text-base text-zinc-700 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
+                        <span className='text-teal-500'>#</span>{tag.slug}
                       </Link>
                     ))}
                 </div>
@@ -77,7 +77,7 @@ export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: P
 
         {relatedPosts && relatedPosts?.length > 0 && (
           <div className='mx-auto max-w-3xl'>
-            <h2 className='mt-20 mb-12 text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Related Posts</h2>
+            <h2 className='mt-24 mb-12 text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Related Posts</h2>
             <div className='flex flex-col gap-16'>
               {relatedPosts.map((post: Post, index: number) => (
                 <PostCard key={index} post={post} isShowTags={true} />

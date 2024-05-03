@@ -20,7 +20,7 @@ export const PostTimeline = ({ className = '', post }: Props) => {
         <ul className='relative z-20 flex flex-wrap gap-x-5 gap-y-1 mt-3'>
           {post?.postTags &&
             post?.postTags.map((tag, index) => (
-              <li key={index} className='text-sm font-medium text-zinc-800 hover:text-teal-500 transition-all duration-200'>
+              <li key={index} className='text-sm font-medium text-zinc-700 hover:text-teal-500 transition-all duration-200'>
                 <Link href={appendUrlParam('t', tag.slug)} scroll={false}>
                   <span className='text-teal-500 mr-0.5'>#</span>
                   {tag.slug}
