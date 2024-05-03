@@ -1,13 +1,49 @@
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
 
+const socialLinks = [
+  {
+    href: 'https://www.facebook.com/Valkyzone/',
+    target: '_blank',
+    icon: 'mdi:facebook',
+    title: 'Follow on Facebook',
+    classNameImg: 'h-6 w-auto text-zinc-500 dark:text-white',
+    className: '',
+  },
+  {
+    href: 'https://www.instagram.com/ngquangvu/',
+    target: '_blank',
+    icon: 'mdi:instagram',
+    title: 'Follow on Instagram',
+    classNameImg: 'h-6 w-auto text-zinc-500 dark:text-white',
+    className: '',
+  },
+  {
+    href: 'https://github.com/ngquangvu',
+    target: '_blank',
+    icon: 'mdi:github',
+    title: 'Follow on GitHub',
+    classNameImg: 'h-6 w-auto text-zinc-500 dark:text-white',
+    className: '',
+  },
+  {
+    href: 'https://www.linkedin.com/in/v%C5%A9-nguy%E1%BB%85n-quang-79610a305/',
+    target: '_blank',
+    icon: 'mdi:linkedin',
+    title: 'Follow on Linkedin',
+    classNameImg: 'h-6 w-auto text-zinc-500 dark:text-white',
+    className: '',
+  }
+];
+
 export function SocialLinkGroup() {
   return (
     <div className='mt-6 flex gap-6 h-6'>
-      <SocialLink href='#' aria-label='Follow on Facebook' icon={() => <Icon icon='mdi:facebook' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
-      <SocialLink href='#' aria-label='Follow on Instagram' icon={() => <Icon icon='mdi:instagram' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
-      <SocialLink href='#' aria-label='Follow on GitHub' icon={() => <Icon icon='mdi:github' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
-      <SocialLink href='#' aria-label='Follow on LinkedIn' icon={() => <Icon icon='mdi:linkedin' className='h-6 w-auto text-zinc-500 dark:text-white' />} />
+      {
+        socialLinks.map((link, index) => (
+          <SocialLink key={index} href={link.href} target={link.target} aria-label={link.title} icon={() => <Icon icon={link.icon} className={link.classNameImg} />} className={link.className} />
+        ))
+      }
     </div>
   );
 }
