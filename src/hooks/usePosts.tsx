@@ -1,34 +1,50 @@
 import useSWR from 'swr';
+import useSWRInfinite from 'swr/infinite';
 import axios, { AxiosError } from 'axios';
 import * as PostAPI from '../apis/apiPost';
-import { defaultPostsRequestParams, PostsRequestParams } from '@/types/post';
+import { defaultPostsRequestParams, Post, PostsRequestParams } from '@/types/post';
 
-// Fetch posts data from API
-export function usePosts(paramsURL?: PostsRequestParams) {
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('An error occurred while fetching the data.');
+  }
+  return await response.json();
+};
+
+export const usePosts = (paramsURL?: PostsRequestParams) => {
   // Setup fetcher function
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
-  // Setup params
-  const params: PostsRequestParams = { ...defaultPostsRequestParams, ...paramsURL };
-  let searchParams = setupParams(params);
+  const getKey = (pageIndex: number, previousPageData: any) => {
+    // Setup params
+    const params: PostsRequestParams = { ...defaultPostsRequestParams, ...paramsURL, page: pageIndex + 1 };
+    let searchParams = setupParams(params);
+    if (previousPageData && !previousPageData.data) return null; // reached the end
+    return process.env.NEXT_PUBLIC_API_URL + `posts?` + searchParams.toString(); // SWR key
+  };
 
-  // Fetch data from API
-  const { data, error, isLoading } =
-    useSWR(process.env.NEXT_PUBLIC_API_URL + `posts?` + searchParams.toString(),
-      fetcher
-    );
+  const { data, error, isLoading, isValidating, mutate, size, setSize } = useSWRInfinite(getKey, fetcher);
+  // Total records
+  const totalCount = data ? data[0]?.data?.totalCount : 0;
 
   // Modify posts data
-  let dataModified = { data: PostAPI.modifyPosts(data?.data) };
-  const totalCount = data?.data?.totalCount || 0;
+  const dataFlat = data ? data.map((d) => d.data.data).flat() : [];
+  let dataModified = dataFlat ? PostAPI.modifyPosts(dataFlat) : [];
+
+  // Remove duplicate data with same id in dataModified
+  const uniqueDataModified = dataModified.filter((v, i, a) => a.findIndex((t) => t?.id === v?.id) === i);
+  // console.log(dataModified.length);
+  // console.log(uniqueDataModified.length);
 
   return {
-    posts: dataModified.data,
-    totalCount,
-    postsLoading: isLoading,
-    isError: error,
+    data: uniqueDataModified,
+    isLoading,
+    size,
+    setSize,
+    hasMore: uniqueDataModified.length < totalCount,
   };
-}
+};
 
 // Fetch post data from API
 export function usePost(key: string) {
@@ -36,18 +52,14 @@ export function usePost(key: string) {
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
   // Fetch data from API
-  const { data, error, isLoading } =
-    useSWR(process.env.NEXT_PUBLIC_API_URL + `posts/k/` + key,
-      fetcher,
-      {
-        // revalidateOnFocus: false,
-        // revalidateOnMount: false,
-        // revalidateOnReconnect: false,
-        // refreshWhenOffline: false,
-        // refreshWhenHidden: false,
-        refreshInterval: 0
-      }
-    );
+  const { data, error, isLoading } = useSWR(process.env.NEXT_PUBLIC_API_URL + `posts/k/` + key, fetcher, {
+    // revalidateOnFocus: false,
+    // revalidateOnMount: false,
+    // revalidateOnReconnect: false,
+    // refreshWhenOffline: false,
+    // refreshWhenHidden: false,
+    refreshInterval: 0,
+  });
 
   // Modify post data
   let dataModified = { data: PostAPI.modifyPost(data?.data) };
