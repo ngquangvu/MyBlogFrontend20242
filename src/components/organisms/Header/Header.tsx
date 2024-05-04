@@ -62,7 +62,7 @@ export function Header() {
             <Popover.Panel focus className='fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800'>
               <div className='flex flex-row-reverse items-center justify-between'>
                 <Popover.Button aria-label='Close menu' className='-m-1 p-1'>
-                  <svg className='h-auto w-6 text-zinc-800 dark:bg-zinc-800/90 dark:text-zinc-200 ' xmlns='http://www.w3.org/2000/svg' width='768' height='768' viewBox='0 0 36 36'>
+                  <svg className='h-auto w-6 fill-zinc-800 dark:fill-zinc-300' xmlns='http://www.w3.org/2000/svg' width='768' height='768' viewBox='0 0 36 36'>
                     <path d='m19.41 18l8.29-8.29a1 1 0 0 0-1.41-1.41L18 16.59l-8.29-8.3a1 1 0 0 0-1.42 1.42l8.3 8.29l-8.3 8.29A1 1 0 1 0 9.7 27.7l8.3-8.29l8.29 8.29a1 1 0 0 0 1.41-1.41Z' />
                     <path fill='none' d='M0 0h36v36H0z' />
                   </svg>
