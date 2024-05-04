@@ -12,8 +12,8 @@ export function SlideAttitudeImages() {
     slidesToScroll: 1,
     slidesToShow: 4,
     autoplay: true,
-    speed: 5500,
-    autoplaySpeed: 5500,
+    speed: 5000,
+    autoplaySpeed: 2000,
     pauseOnHover: false,
     cssEase: 'linear',
     responsive: [
