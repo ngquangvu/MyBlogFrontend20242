@@ -3,6 +3,7 @@ import { type Metadata } from 'next';
 import { Providers } from '@/app/providers';
 import { Layout } from '@/components/layouts/Layout';
 import '@/styles/tailwind.css';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: {
@@ -18,7 +19,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body suppressHydrationWarning={true} className='flex h-full bg-zinc-50 dark:bg-black'>
         <Providers>
           <div className='flex w-full'>
-            <Layout>{children}</Layout>
+            <Suspense>
+              <Layout>{children}</Layout>
+            </Suspense>
           </div>
         </Providers>
       </body>
