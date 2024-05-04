@@ -40,8 +40,9 @@ export default function Home() {
         </div>
       </Container>
       <Container className='mt-12 md:mt-20'>
-        <div className='mx-auto'>
+        <div className='relative mx-auto'>
           <SlideAttitudeImages />
+          <div className='absolute inset-0'></div>
         </div>
       </Container>
       <Container className='mt-24 md:mt-28'>
