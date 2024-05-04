@@ -34,7 +34,7 @@ function PostsSort() {
   }, [search, cate, tag]);
   return (
     <Suspense>
-      <div className='flex space-x-6 md:space-x-10 bg-white'>
+      <div className='flex space-x-6 md:space-x-10'>
         <Link href={recentLink} scroll={false} className={`${sort === null ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100`}>
           Recent
         </Link>
