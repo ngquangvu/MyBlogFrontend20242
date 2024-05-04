@@ -37,7 +37,7 @@ export function SlideAttitudeImages() {
       },
 
       {
-        breakpoint: 375,
+        breakpoint: 320,
         settings: {
           slidesToShow: 1,
           adaptiveHeight: false,
