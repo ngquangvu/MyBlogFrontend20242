@@ -56,7 +56,7 @@ export function CategoriesTagsFilter() {
             </div>
           )}
         </div>
-        <div className='border-t border-default p-6'>
+        <div className='border-t border-default dark:border-zinc-700/40 p-6'>
           <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
             <div className='h-6 w-6'>
               <Icon icon='tabler:tag' className='h-6 w-6 text-zinc-500 flex-none' />
