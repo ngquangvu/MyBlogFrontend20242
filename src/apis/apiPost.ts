@@ -42,7 +42,7 @@ export function modifyPost(postRes: Post) {
     const postedAtShort = postRes.postedAt ? new Date(postRes.postedAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
 
     // Summary modification
-    const summary = postRes.summary && postRes.summary?.length > 0 ? postRes.summary?.substring(0, 400) + '...' :  postRes.content?.substring(0, 400)?.replace(/<[^>]*>/g, '') + '...';
+    const summary = postRes.summary && postRes.summary?.length > 0 ? postRes.summary : postRes.content?.substring(0, 500)?.replace(/<[^>]*>/g, '') + '...';
 
     // Calculate readMins from content length
     const readMins = Math.round(postRes.content?.length ? Math.round(postRes.content?.length / 500) : 5);
