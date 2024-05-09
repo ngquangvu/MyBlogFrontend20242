@@ -90,6 +90,7 @@
 
 .tiptap li {
   margin: 0.45rem 0;
+  color: var(--text-color-light) !important;
 }
 
 .tiptap blockquote {
@@ -159,6 +160,11 @@
   .tiptap ul,
   .tiptap menu {
     color: var(--text-color-dark);
+  }
+
+  .tiptap li {
+    margin: 0.45rem 0;
+    color: var(--text-color-dark) !important;
   }
 
   .tiptap blockquote {
