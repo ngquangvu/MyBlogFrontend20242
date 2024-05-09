@@ -16,6 +16,7 @@ export type Post = {
   postCategories?: Category[];
   postTags?: Tag[];
 
+  createdAt?: string;
   postedAt?: string;
   postedAtShort?: string;
   postedTimeAgo?: string;
