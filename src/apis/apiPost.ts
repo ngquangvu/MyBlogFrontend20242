@@ -36,10 +36,10 @@ export function modifyPost(postRes: Post) {
       '-' +
       postRes.key;
     // Format postedAt to 'MMM dd, yyyy hh:mm a'
-    const postedAt = postRes.postedAt ? new Date(postRes.postedAt).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true }) : new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true });
+    const postedAt = postRes.createdAt ? new Date(postRes.createdAt).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true }) : new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true });
 
     // Format postedAt to 'YYYY-MM-DD'
-    const postedAtShort = postRes.postedAt ? new Date(postRes.postedAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+    const postedAtShort = postRes.createdAt ? new Date(postRes.createdAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
 
     // Summary modification
     const summary = postRes.summary && postRes.summary?.length > 0 ? postRes.summary : postRes.content?.substring(0, 500)?.replace(/<[^>]*>/g, '') + '...';
