@@ -1,4 +1,5 @@
 import { type Metadata } from 'next';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 import { Providers } from '@/app/providers';
 import { Layout } from '@/components/layouts/Layout';
@@ -17,8 +18,10 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_GA_ID;
   return (
     <html lang='en' className='h-full antialiased' suppressHydrationWarning>
+      <GoogleAnalytics gaId={GA_ID || ''} />
       <body suppressHydrationWarning={true} className='flex h-full bg-zinc-50 dark:bg-black'>
         <Providers>
           <div className='flex w-full'>
