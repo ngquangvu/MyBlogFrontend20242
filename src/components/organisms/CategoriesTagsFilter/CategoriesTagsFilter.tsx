@@ -22,7 +22,7 @@ export function CategoriesTagsFilter() {
   return (
     <Suspense>
       <div className='flex flex-col rounded-xl border border-default dark:border-zinc-700/40'>
-        <div className='p-6'>
+        <div className='p-6 pl-5'>
           <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
             <div className='h-6 w-6'>
               <Icon icon='tabler:category' className='h-6 w-6 text-zinc-500 flex-none' />
@@ -47,7 +47,7 @@ export function CategoriesTagsFilter() {
                 )}
                 {categories.map((cate, index) => (
                   <li key={index} className='py-0.5'>
-                    <Link href={appendUrlParam('c', cate.slug)} scroll={false} className={`${paramCate === cate.slug && 'font-bold pointer-events-none'} text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200`}>
+                    <Link href={appendUrlParam('c', cate.slug)} scroll={false} className={`${paramCate === cate.slug && 'font-bold pointer-events-none !text-teal-500 dark:text-teal-500'} text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200`}>
                       {cate.title}
                     </Link>
                   </li>
@@ -56,7 +56,7 @@ export function CategoriesTagsFilter() {
             </div>
           )}
         </div>
-        <div className='border-t border-default dark:border-zinc-700/40 p-6'>
+        <div className='border-t border-default dark:border-zinc-700/40 p-6 pl-5'>
           <h2 className='flex mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100'>
             <div className='h-6 w-6'>
               <Icon icon='tabler:tag' className='h-6 w-6 text-zinc-500 flex-none' />
@@ -71,7 +71,7 @@ export function CategoriesTagsFilter() {
 
           {tags && tags?.length > 0 && (
             <div className='ml-9'>
-              <ul>
+              <ul className='relative z-20 flex flex-wrap gap-x-5 gap-y-0 mt-3'>
                 {paramTag && (
                   <li className='py-0.5'>
                     <Link href={appendUrlParam('t', '')} scroll={false} className='text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
@@ -81,7 +81,7 @@ export function CategoriesTagsFilter() {
                 )}
                 {tags.map((tag, index) => (
                   <li key={index} className='py-0.5'>
-                    <Link href={appendUrlParam('t', tag.slug)} scroll={false} className={`${paramTag === tag.slug && 'font-bold pointer-events-none'} text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200`}>
+                    <Link href={appendUrlParam('t', tag.slug)} scroll={false} className={`${paramTag === tag.slug && 'font-bold pointer-events-none !text-teal-500 dark:text-teal-500'} text-sm text-zinc-600 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200`}>
                       #{tag.slug}
                     </Link>
                   </li>

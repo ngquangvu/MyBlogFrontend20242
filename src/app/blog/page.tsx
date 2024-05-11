@@ -64,14 +64,14 @@ export default function Blog() {
                 ) : (
                   <div className='space-y-6'>
                     <div className='w-full'>
-                      <p className='md:ml-5 text-center md:text-left text-base text-zinc-600 dark:text-zinc-400'>No posts found matching your search or filter criteria.</p>
+                      <p className='text-center md:text-left text-base text-zinc-600 dark:text-zinc-400'>No posts found matching your search or filter criteria.</p>
                     </div>
                   </div>
                 )}
                 {!posts && (
                   <div className='space-y-6'>
                     <div className='w-full'>
-                      <p className='md:ml-5 text-center md:text-left text-base text-zinc-600 dark:text-zinc-400'>No posts found matching your search or filter criteria.</p>
+                      <p className='text-center md:text-left text-base text-zinc-600 dark:text-zinc-400'>No posts found matching your search or filter criteria.</p>
                     </div>
                   </div>
                 )}
