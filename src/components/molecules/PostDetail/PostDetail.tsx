@@ -59,7 +59,8 @@ export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: P
                     post?.postTags?.length > 0 &&
                     post?.postTags.map((tag) => (
                       <Link href={`/blog?tag=${tag.slug}`} key={tag.slug} className='text-base text-zinc-700 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
-                        <span className='text-teal-500'>#</span>{tag.slug}
+                        <span className='text-teal-500'>#</span>
+                        {tag.slug}
                       </Link>
                     ))}
                 </div>
@@ -69,15 +70,20 @@ export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: P
                 </time>
               </header>
               <div className='tiptap'>
-                <div className='my-12' dangerouslySetInnerHTML={{ __html: post?.content || '' }} />
+                <div className='mt-12 mb-16' dangerouslySetInnerHTML={{ __html: post?.content || '' }} />
               </div>
             </article>
           </div>
         </div>
 
         {relatedPosts && relatedPosts?.length > 0 && (
-          <div className='mx-auto max-w-3xl'>
-            <h2 className='mt-24 mb-12 text-2xl font-bold text-zinc-800 dark:text-zinc-100'>Related Posts</h2>
+          <div className='mx-auto max-w-3xl border-t'>
+            <div className='flex space-x-6 md:space-x-10 mt-16 mb-12'>
+              <h2 className='text-zinc-800 pointer-events-none text-base md:text-xl font-bold dark:text-zinc-100'>Related</h2>
+              <Link href='/blog' scroll={false} className='hover:text-teal-500 text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-10 transition-all duration-200'>
+                All
+              </Link>
+            </div>
             <div className='flex flex-col gap-16'>
               {relatedPosts.map((post: Post, index: number) => (
                 <PostCard key={index} post={post} isShowTags={true} />
