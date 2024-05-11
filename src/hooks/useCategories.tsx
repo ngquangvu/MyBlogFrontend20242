@@ -8,7 +8,10 @@ export function useCategories() {
   const fetcher: (url: string) => Promise<{data: CategoriesResponseData}> = (url) => axios.get(url).then((res) => res.data);
 
   // Fetch data from API
-  const { data, error, isLoading } = useSWR(process.env.NEXT_PUBLIC_API_URL + `categories?`, fetcher);
+  const { data, error, isLoading } = useSWR(process.env.NEXT_PUBLIC_API_URL + `categories?`, fetcher, {
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  });
 
   return {
     categories: data?.data?.data || [],
