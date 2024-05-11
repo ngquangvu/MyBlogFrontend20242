@@ -35,13 +35,13 @@ function PostsSort() {
   return (
     <Suspense>
       <div className='flex space-x-6 md:space-x-10'>
-        <Link href={recentLink} scroll={false} className={`${sort === null ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100 transition-all duration-200`}>
+        <Link href={recentLink} scroll={false} className={`${sort === null ? 'text-zinc-800 dark:text-teal-500 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100 transition-all duration-200`}>
           Recent
         </Link>
-        <Link href={relevantLink} scroll={false} className={`${sort === 'relevant' ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100 transition-all duration-200`}>
+        <Link href={relevantLink} scroll={false} className={`${sort === 'relevant' ? 'text-zinc-800 dark:text-teal-500 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100 transition-all duration-200`}>
           Relevant
         </Link>
-        <Link href={topLink} scroll={false} className={`${sort === 'top' ? 'text-zinc-800 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100 transition-all duration-200`}>
+        <Link href={topLink} scroll={false} className={`${sort === 'top' ? 'text-zinc-800 dark:text-teal-500 pointer-events-none' : 'hover:text-teal-500'} text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-100 transition-all duration-200`}>
           Top
         </Link>
       </div>
