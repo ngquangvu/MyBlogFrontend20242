@@ -77,7 +77,7 @@ export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: P
         </div>
 
         {relatedPosts && relatedPosts?.length > 0 && (
-          <div className='mx-auto max-w-3xl border-t'>
+          <div className='mx-auto max-w-3xl border-t border-default dark:border-zinc-700/40'>
             <div className='flex space-x-6 md:space-x-10 mt-16 mb-12'>
               <h2 className='text-zinc-800 pointer-events-none text-base md:text-xl font-bold dark:text-zinc-100'>Related</h2>
               <Link href='/blog' scroll={false} className='hover:text-teal-500 text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-10 transition-all duration-200'>

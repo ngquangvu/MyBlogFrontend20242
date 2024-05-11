@@ -9,7 +9,7 @@ import { Suspense } from 'react';
 export const metadata: Metadata = {
   title: {
     template: '%s - Quang Vu',
-    default: 'Quang Vu - Full-stack Developer',
+    default: 'Quang Vu - Full-stack developer',
   },
   description: `Welcome to my personal website. I'm a full-stack developer with a passion for web development, programming, and technology.`,
   openGraph: {

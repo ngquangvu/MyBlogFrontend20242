@@ -24,7 +24,10 @@ export const usePosts = (paramsURL?: PostsRequestParams) => {
     return process.env.NEXT_PUBLIC_API_URL + `posts?` + searchParams.toString(); // SWR key
   };
 
-  const { data, error, isLoading, isValidating, mutate, size, setSize } = useSWRInfinite(getKey, fetcher);
+  const { data, error, isLoading, isValidating, mutate, size, setSize } = useSWRInfinite(getKey, fetcher, {
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  });
   // Total records
   const totalCount = data ? data[0]?.data?.totalCount : 0;
 
@@ -34,8 +37,6 @@ export const usePosts = (paramsURL?: PostsRequestParams) => {
 
   // Remove duplicate data with same id in dataModified
   const uniqueDataModified = dataModified.filter((v, i, a) => a.findIndex((t) => t?.id === v?.id) === i);
-  // console.log(dataModified.length);
-  // console.log(uniqueDataModified.length);
 
   return {
     data: uniqueDataModified,
@@ -53,12 +54,8 @@ export function usePost(key: string) {
 
   // Fetch data from API
   const { data, error, isLoading } = useSWR(process.env.NEXT_PUBLIC_API_URL + `posts/k/` + key, fetcher, {
-    // revalidateOnFocus: false,
-    // revalidateOnMount: false,
-    // revalidateOnReconnect: false,
-    // refreshWhenOffline: false,
-    // refreshWhenHidden: false,
-    refreshInterval: 0,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
   });
 
   // Modify post data
