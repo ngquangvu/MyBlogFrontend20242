@@ -9,12 +9,8 @@ export function useTags() {
 
   // Fetch data from API
   const { data, error, isLoading } = useSWR(process.env.NEXT_PUBLIC_API_URL + `tags?`, fetcher, {
-    // revalidateOnFocus: false,
-    // revalidateOnMount:false,
-    // revalidateOnReconnect: false,
-    // refreshWhenOffline: false,
-    // refreshWhenHidden: false,
-    // refreshInterval: 0,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
   });
 
   return {
