@@ -207,12 +207,25 @@
 
 .tiptap pre {
   overflow-x: auto;
-  background: #161616;
+  font-size: large;
+  background-color: #23241f;
+  counter-reset: linecounter;
   border-radius: 0.75rem;
   color: #fff;
   font-family: 'JetBrainsMono', monospace;
   padding: 1.5rem;
   margin: 1rem auto;
+}
+
+.tiptap pre .line-num {
+  min-width: 3.5ch;
+  display: inline-block;
+}
+
+.tiptap pre .line-num::before {
+  color: #515151;
+  counter-increment: linecounter;
+  content: counter(linecounter);
 }
 
 .tiptap pre code {
@@ -279,8 +292,9 @@
 pre code.hljs {
   display: block;
   overflow-x: auto;
-  padding: 1em;
+  /* padding: 1em; */
 }
+
 code.hljs {
   padding: 3px 5px;
 }

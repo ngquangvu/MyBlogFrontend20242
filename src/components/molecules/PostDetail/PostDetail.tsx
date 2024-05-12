@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { AppContext } from '@/app/providers';
 import { Container } from '@/components/molecules/Container';
 import { Icon } from '@iconify/react';
 import { Post } from '@/types/post';
-import Script from 'next/script';
+import Link from 'next/link';
+import { PostCard } from '../PostCard';
 import hljs from 'highlight.js';
 import xml from 'highlight.js/lib/languages/xml';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -23,23 +24,22 @@ import n1ql from 'highlight.js/lib/languages/n1ql';
 import json from 'highlight.js/lib/languages/json';
 import bash from 'highlight.js/lib/languages/bash';
 import ebnf from 'highlight.js/lib/languages/ebnf';
-import Link from 'next/link';
-import { PostCard } from '../PostCard';
-hljs.registerLanguage( 'xml', xml );
-hljs.registerLanguage( 'javascript', javascript );
-hljs.registerLanguage( 'typescript', typescript );
-hljs.registerLanguage( 'php', php );
-hljs.registerLanguage( 'python', python );
-hljs.registerLanguage( 'csharp', csharp );
-hljs.registerLanguage( 'scss', scss );
-hljs.registerLanguage( 'css', css );
-hljs.registerLanguage( 'less', less );
-hljs.registerLanguage( 'stylus', stylus );
-hljs.registerLanguage( 'dust', dust );
-hljs.registerLanguage( 'n1ql', n1ql );
-hljs.registerLanguage( 'json', json );
-hljs.registerLanguage( 'bash', bash );
-hljs.registerLanguage( 'ebnf', ebnf );
+
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('php', php);
+hljs.registerLanguage('python', python);
+hljs.registerLanguage('csharp', csharp);
+hljs.registerLanguage('scss', scss);
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('less', less);
+hljs.registerLanguage('stylus', stylus);
+hljs.registerLanguage('dust', dust);
+hljs.registerLanguage('n1ql', n1ql);
+hljs.registerLanguage('json', json);
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('ebnf', ebnf);
 
 export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: Post[] }) {
   let router = useRouter();
@@ -47,14 +47,46 @@ export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: P
 
   useEffect(() => {
     if (post) {
-      hljs.initHighlightingOnLoad();
-      hljs.initHighlighting();
+      initHighlighting();
     }
   }, [post]);
 
+  // Init highlighting for code blocks
+  function initHighlighting() {
+    // Prevent calling initHighlighting multiple times
+    if (document.querySelectorAll('pre code.hljs').length > 0) {
+      return;
+    }
+
+    // Replace all typescriptreact to typescript
+    document.querySelectorAll('pre code.language-typescriptreact').forEach((el) => {
+      el.classList.remove('language-typescriptreact');
+      el.classList.add('language-typescript');
+    });
+
+    // Replace all prisma to typescript
+    document.querySelectorAll('pre code.language-prisma').forEach((el) => {
+      el.classList.remove('language-prisma');
+      el.classList.add('language-typescript');
+    });
+
+    // Add line numbers to code blocks
+    hljs.addPlugin({
+      'after:highlightElement': ({ result, el }) => {
+        const lines = document.createElement('div');
+        if (!result.value.includes('<span class="line-num">')) {
+          lines.innerHTML = result.value.replace(/^/gm, '<span class="line-num"></span>');
+        }
+        el.replaceChildren(...lines.childNodes);
+      },
+    });
+
+    // Highlight all code blocks
+    hljs.highlightAll()
+  }
+
   return (
     <>
-      <Script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js'></Script>
       <Container className='mt-16 sm:mt-28'>
         <div className='xl:relative'>
           <div className='mx-auto max-w-3xl'>
