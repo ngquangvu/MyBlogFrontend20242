@@ -87,9 +87,9 @@ export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: P
 
   return (
     <>
-      <Container className='mt-16 sm:mt-28'>
+      <Container className='mt-12 sm:mt-24'>
         <div className='xl:relative'>
-          <div className='mx-auto max-w-3xl'>
+          <div className='mx-auto max-w-3xl -mt-6'>
             {previousPathname && (
               <button type='button' onClick={() => router.back()} aria-label='Go back to blogs' className='group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition lg:absolute lg:-left-5 lg:-mt-2 lg:mb-0 xl:-top-1.5 xl:left-0 xl:mt-0 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 dark:ring-white/10 dark:hover:border-zinc-700 dark:hover:ring-white/20'>
                 <Icon icon='formkit:arrowleft' className='h-4 w-4 stroke-zinc-500 transition group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400' />
