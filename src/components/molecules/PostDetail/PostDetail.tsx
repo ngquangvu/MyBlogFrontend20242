@@ -102,7 +102,7 @@ export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: P
                   {post.postTags &&
                     post?.postTags?.length > 0 &&
                     post?.postTags.map((tag) => (
-                      <Link href={`/blog?tag=${tag.slug}`} key={tag.slug} className='text-base text-zinc-700 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
+                      <Link href={`/blog?t=${tag.slug}`} key={tag.slug} className='text-base text-zinc-700 dark:text-zinc-400 hover:text-teal-500 dark:hover:text-teal-500 transition-all duration-200'>
                         <span className='text-teal-500'>#</span>
                         {tag.slug}
                       </Link>
@@ -124,7 +124,7 @@ export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: P
           <div className='mx-auto max-w-3xl border-t border-default dark:border-zinc-700/40'>
             <div className='flex space-x-6 md:space-x-10 mt-16 mb-12'>
               <h2 className='text-zinc-800 pointer-events-none text-base md:text-xl font-bold dark:text-zinc-100'>Related</h2>
-              <Link href='/blog' className='hover:text-teal-500 text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-10 transition-all duration-200'>
+              <Link href='/blog' className='hover:text-teal-500 text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-500 transition-all duration-200'>
                 All
               </Link>
             </div>
