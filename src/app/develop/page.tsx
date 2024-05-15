@@ -340,7 +340,7 @@ function CustomerList({ items }: { items: Array<UsableItem> }) {
           {items.map((item, index) => (
             <li key={index} className='flex justify-center px-4 md:px-5'>
               <a className='flex justify-center h-20 w-full grayscale-[1] dark:contrast-[0] hover:grayscale-0 hover:scale-105 transition-all duration-150' target='_blank' href={item.url}>
-                <Image className='object-contain' src={item.icon} alt={item.title} width={180} height={180} />
+                <Image className='object-contain object-center' src={item.icon} alt={item.title} width={180} height={180} />
                 <span className='hidden'>{item.title}</span>
               </a>
             </li>
