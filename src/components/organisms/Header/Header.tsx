@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import { Icon } from '@iconify/react';
 
 import { Fragment } from 'react';
+import { ThemeToggle } from '../ThemeToggle';
 
 const NavItems = [
   { href: '/', label: 'Home' },
@@ -112,7 +113,7 @@ export function Header() {
         <MobileNavigation className='pointer-events-auto md:hidden' />
       </div>
 
-      <div className='absolute right-2 top-0 pointer-events-auto py-4'>{/* <ThemeToggle /> */}</div>
+      <div className='absolute right-2 top-0 pointer-events-auto py-4'><ThemeToggle /></div>
     </header>
   );
 }
