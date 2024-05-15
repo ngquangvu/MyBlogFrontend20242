@@ -110,10 +110,10 @@ export function Header() {
         <Link href='/'>
           <Icon icon='ic:round-home' className='h-8 w-8 text-zinc-700 dark:text-zinc-200' />
         </Link>
-        <MobileNavigation className='pointer-events-auto md:hidden' />
+        <MobileNavigation className='pointer-events-auto md:hidden mr-11' />
       </div>
 
-      <div className='absolute right-2 top-0 pointer-events-auto py-4'><ThemeToggle /></div>
+      <div className='absolute right-2 md:right-4 top-0 pointer-events-auto pt-5 pb-2 md:py-5'><ThemeToggle /></div>
     </header>
   );
 }

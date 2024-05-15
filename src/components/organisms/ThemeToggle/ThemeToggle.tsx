@@ -12,7 +12,7 @@ export const ThemeToggle = () => {
 
   return (
     <div>
-      <button type='button' onClick={() => setTheme(otherTheme)} aria-label={mounted ? `Switch to ${otherTheme} theme` : 'Toggle theme'} className='group rounded-full border border-default dark:border-zinc-700 bg-white/90 dark:bg-zinc-800/90 px-2 py-2 transition '>
+      <button type='button' onClick={() => setTheme(otherTheme)} aria-label={mounted ? `Switch to ${otherTheme} theme` : 'Toggle theme'} className='h-10 w-10 flex items-center justify-center group rounded-full border border-default dark:border-zinc-700 bg-white/90 dark:bg-zinc-800/90 px-2 py-2 transition '>
         <svg className={`${resolvedTheme === 'dark' ? 'hidden' : 'block'} h-6 w-6 transition-all duration-300 fill-zinc-100 stroke-zinc-500 group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600`} viewBox='0 0 24 24' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' aria-hidden='true'>
           <path d='M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z' />
           <path d='M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M18.791 5.709l-1.06 1.06M12.25 20v1.5M4.5 12.25H3M6.77 6.77 5.709 5.709M6.77 17.73l-1.061 1.061' fill='none' />
