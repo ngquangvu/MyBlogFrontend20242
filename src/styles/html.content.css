@@ -16,6 +16,7 @@
 }
 
 .tiptap img {
+  height: auto !important;
   border-radius: 0.75rem;
   object-fit: contain;
   margin: 20px 0;
