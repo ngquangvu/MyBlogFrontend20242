@@ -1,14 +1,6 @@
-import Link from 'next/link';
-
+import { Link } from '@/navigation';
+import { useTranslations } from 'next-intl';
 import { ContainerInner, ContainerOuter } from '@/components/molecules/Container';
-
-const NavItems = [
-  { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/develop', label: 'Develop' },
-  { href: '/photography', label: 'Photography' },
-  { href: '/uses', label: 'Uses' },
-];
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -19,6 +11,15 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 }
 
 export function Footer() {
+  const t = useTranslations('HeaderFooter');
+  const NavItems = [
+    { href: '/about', label: t('about') },
+    { href: '/blog', label: t('blog') },
+    { href: '/develop', label: t('develop') },
+    { href: '/photography', label: t('photography') },
+    { href: '/uses', label: t('uses') },
+  ];
+
   return (
     <footer className='mt-32 flex-none'>
       <ContainerOuter>
@@ -32,7 +33,7 @@ export function Footer() {
                   </NavLink>
                 ))}
               </div>
-              <p className='text-sm text-zinc-400 dark:text-zinc-500'>&copy; {new Date().getFullYear()}. All rights reserved.</p>
+              <p className='text-sm text-zinc-400 dark:text-zinc-500'>&copy; {new Date().getFullYear()}. {t('All rights reserved')}</p>
             </div>
           </ContainerInner>
         </div>

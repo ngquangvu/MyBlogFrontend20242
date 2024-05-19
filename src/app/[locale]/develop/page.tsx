@@ -18,6 +18,8 @@ import { Card } from '@/components/molecules/Card';
 import { SectionTitle } from '@/components/molecules/SectionTitle';
 import Image from 'next/image';
 import { getYearMonthAmountBetweenDates } from '@/utils';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/navigation';
 
 interface FeatureItem {
   description: string;
@@ -26,49 +28,6 @@ interface FeatureItem {
 }
 
 const leaderYears = getYearMonthAmountBetweenDates(new Date('2021-02-01'), new Date());
-
-const skills: Array<FeatureItem> = [
-  {
-    title: 'Frontend Development',
-    description: 'Specializing in HTML, CSS, and JavaScript, with expertise in frameworks for creating dynamic and responsive web applications',
-    icon: 'clarity:command-line',
-  },
-  {
-    title: 'Backend Development',
-    description: 'Building and maintaining the server-side logic of web applications, handling data processing and system integration',
-    icon: 'clarity:command-outline-badged',
-  },
-  {
-    title: 'Unity Development',
-    description: 'Specializing in creating and developing applications and games using the Unity game engine',
-    icon: 'tabler:brand-unity',
-  },
-  {
-    title: 'Leadership',
-    description: 'Take responsibility as a leader for ' + leaderYears + ' years, have certificates in Scrum - Agile and Project Management',
-    icon: 'fluent-mdl2:party-leader',
-  },
-  {
-    title: 'Communication',
-    description: 'Proficient in English and Japanese (JLPT N3) for effective communication in both languages',
-    icon: 'cil:language',
-  },
-  {
-    title: 'Design',
-    description: 'Designing user interfaces and user experiences, creating wireframes and mockups for web and applications',
-    icon: 'fluent:design-ideas-24-regular',
-  },
-  {
-    title: 'Enthusiasm',
-    description: 'Igniting and empowering a team to deliver exceptional software solutions with passion and drive',
-    icon: 'ri:empathize-line',
-  },
-  {
-    title: 'Sociability',
-    description: 'Building strong relationships, promotes collaboration, and creates a positive work environment through effective communication',
-    icon: 'ph:users-three',
-  },
-];
 
 function Skill({ title, description, icon }: { title: string; description: string; icon: string }) {
   return (
@@ -252,10 +211,10 @@ function UsableList({ items, title }: { items: Array<UsableItem>; title: string 
           {items.map((item, index) => (
             <li key={index}>
               {item.url != '' ? (
-                <a className='flex flex-col items-center gap-2' href={item.url}>
+                <Link className='flex flex-col items-center gap-2' href={item.url}>
                   <Icon className='h-10 w-auto text-zinc-600' icon={item.icon} />
                   <span>{item.title}</span>
-                </a>
+                </Link>
               ) : (
                 <div className='flex flex-col items-center gap-2'>
                   <div className='h-10 w-10'>
@@ -338,11 +297,11 @@ function CustomerList({ items }: { items: Array<UsableItem> }) {
       <div className='relative rounded-xl border border-default dark:border-zinc-700/40 px-6 pb-6 pt-8'>
         <ul className='grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 md:grid-cols-5'>
           {items.map((item, index) => (
-            <li key={index} className='flex justify-center px-4 md:px-5'>
-              <a className='flex justify-center h-20 w-full grayscale-[1] dark:contrast-[0] hover:grayscale-0 hover:scale-105 transition-all duration-150' target='_blank' href={item.url}>
+            <li key={index} className='flex justify-center items-center px-4 md:px-5'>
+              <Link className='flex justify-center items-center h-20 w-full grayscale-[1] dark:contrast-[0] hover:grayscale-0 hover:scale-105 transition-all duration-150' target='_blank' href={item.url}>
                 <Image className='object-contain object-center' src={item.icon} alt={item.title} width={180} height={180} />
                 <span className='hidden'>{item.title}</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -352,10 +311,55 @@ function CustomerList({ items }: { items: Array<UsableItem> }) {
 }
 
 export default function Develop() {
+  const t = useTranslations('Develop');
+
+  const skills: Array<FeatureItem> = [
+    {
+      title: t('Skills.title 1'),
+      description: t('Skills.content 1'),
+      icon: 'ph:layout',
+    },
+    {
+      title: t('Skills.title 2'),
+      description: t('Skills.content 2'),
+      icon: 'clarity:command-outline-badged',
+    },
+    {
+      title: t('Skills.title 3'),
+      description: t('Skills.content 3'),
+      icon: 'tabler:brand-unity',
+    },
+    {
+      title: t('Skills.title 4'),
+      description: t('Skills.content 4'),
+      icon: 'carbon:inventory-management',
+    },
+    {
+      title: t('Skills.title 5'),
+      description:  t('Skills.content 5', { leaderYears }),
+      icon: 'fluent-mdl2:party-leader',
+    },
+    {
+      title: t('Skills.title 6'),
+      description: t('Skills.content 6'),
+      icon: 'cil:language',
+    },
+    {
+      title: t('Skills.title 7'),
+      description: t('Skills.content 7'),
+      icon: 'fluent:design-ideas-24-regular',
+    },
+    {
+      title: t('Skills.title 8'),
+      description: t('Skills.content 8'),
+      icon: 'ri:empathize-line',
+    },
+  ];
+
   return (
     <Container className='sm:px-8 mt-16 sm:mt-28'>
       <div>
-        <SectionTitle title='Some of my skills.' intro='After dedicating considerable time to both learning and working, I’ve actively developed and achieved proficiency in a wide range of essential skills.' />
+        <SectionTitle title={t('Skills.title')} intro={t('Skills.content')}  />
         <div className='mt-16 sm:mt-20'>
           <ul className='grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {skills.map((skill, index) => (
@@ -366,18 +370,18 @@ export default function Develop() {
       </div>
 
       <div className='sm:px-8 mt-16 sm:mt-28'>
-        <SectionTitle title='Tech stack & tools.' intro='I have experience working with a variety of languages, frameworks, and platforms, enabling me to deliver high-quality software solutions.' />
+        <SectionTitle title={t('TechStackTools.title')} intro={t('TechStackTools.content')} />
         <div className='mt-16 sm:mt-20'>
           <div className='flex flex-col space-y-8'>
-            <UsableList items={languages} title='LANGUAGES & DATABASES' />
-            <UsableList items={frameworks} title='LIBRARY & FRAMEWORKS' />
-            <UsableList items={platforms} title='OTHERS' />
+            <UsableList items={languages} title={t('TechStackTools.LANGUAGES & DATABASES')} />
+            <UsableList items={frameworks} title={t('TechStackTools.LIBRARY & FRAMEWORKS')} />
+            <UsableList items={platforms} title={t('TechStackTools.OTHERS')} />
           </div>
         </div>
       </div>
 
       <div className='sm:px-8 mt-16 sm:mt-28'>
-        <SectionTitle title='Some of my customers.' intro='Many of my customers are well-known companies in Japan, and I have had the privilege of working with them on various projects.' />
+        <SectionTitle title={t('Customers.title')} intro={t('Customers.content')} />
         <div className='mt-16 sm:mt-20'>
           <div className=''>
             <CustomerList items={customers} />

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 
 export function Card<T extends React.ElementType = 'div'>({
   as,
