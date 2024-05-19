@@ -2,12 +2,15 @@ import { useCategories } from '@/hooks/useCategories';
 import { useTags } from '@/hooks/useTags';
 import { appendUrlParam } from '@/utils';
 import { Icon } from '@iconify/react/dist/iconify.js';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { SkeletonLines } from '../../molecules/SkeletonLines';
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
+import { useTranslations } from 'next-intl';
 
 export function CategoriesTagsFilter() {
+  const t = useTranslations('Blog');
+
   // Get search params
   const searchParams = useSearchParams();
   const paramCate = searchParams.get('c');
@@ -27,7 +30,7 @@ export function CategoriesTagsFilter() {
             <div className='absolute top-2 right-3'>
               <Link href={appendUrlParam('c', '')} scroll={false} className='flex items-center space-x-1 text-zinc-500 hover:text-teal-500 text-xs transition-all duration-200'>
                 <Icon icon='mdi:clear-outline' className='h-3.5 w-3.5' />
-                <span>Clear</span>
+                <span>{t("Clear")}</span>
               </Link>
             </div>
           )}
@@ -36,7 +39,7 @@ export function CategoriesTagsFilter() {
             <div className='h-6 w-6'>
               <Icon icon='tabler:category' className='h-6 w-6 text-zinc-500 flex-none' />
             </div>
-            <span className='ml-3'>Categories</span>
+            <span className='ml-3'>{t("Categories")}</span>
           </h2>
           {categoriesLoading && (
             <div className='mt-6'>
@@ -63,7 +66,7 @@ export function CategoriesTagsFilter() {
             <div className='absolute top-2 right-3'>
               <Link href={appendUrlParam('t', '')} scroll={false} className='flex items-center space-x-1 text-zinc-500 hover:text-teal-500 text-xs transition-all duration-200'>
                 <Icon icon='mdi:clear-outline' className='h-3.5 w-3.5' />
-                <span>Clear</span>
+                <span>{t("Clear")}</span>
               </Link>
             </div>
           )}
@@ -71,7 +74,7 @@ export function CategoriesTagsFilter() {
             <div className='h-6 w-6'>
               <Icon icon='tabler:tag' className='h-6 w-6 text-zinc-500 flex-none' />
             </div>
-            <span className='ml-3'>Tags</span>
+            <span className='ml-3'>{t("Tags")}</span>
           </h2>
           {tagsLoading && (
             <div className='mt-6'>

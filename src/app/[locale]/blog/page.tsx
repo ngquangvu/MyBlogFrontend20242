@@ -10,8 +10,11 @@ import { CategoriesTagsFilter } from '@/components/organisms/CategoriesTagsFilte
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { SkeletonLines } from '@/components/molecules/SkeletonLines';
 import { Suspense } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function Blog() {
+  const t = useTranslations('Blog');
+
   // Get search params
   const searchParams = useSearchParams();
   const paramSort = searchParams.get('s');
@@ -26,7 +29,7 @@ export default function Blog() {
 
   return (
     <Suspense>
-      <SimpleLayout title='Writing on technology, software design, leadership, and more.' intro='My learning and work journey has been an investment in knowledge, and I’m excited to share it through writing about programming, leadership, product design, and beyond.  It’s fantastic to hear these resonate with you!'>
+      <SimpleLayout title={t('title')} intro={t('content')}>
         <div className='mt-4 mb-6 md:mb-0 md:mt-8'>
           <SearchSortBar />
         </div>
@@ -64,14 +67,14 @@ export default function Blog() {
                 ) : (
                   <div className='space-y-6'>
                     <div className='w-full'>
-                      <p className='text-center md:text-left text-base text-zinc-600 dark:text-zinc-400'>No posts found matching your search or filter criteria.</p>
+                      <p className='text-center md:text-left text-base text-zinc-600 dark:text-zinc-400'>{t('No posts found matching')}</p>
                     </div>
                   </div>
                 )}
                 {!posts && (
                   <div className='space-y-6'>
                     <div className='w-full'>
-                      <p className='text-center md:text-left text-base text-zinc-600 dark:text-zinc-400'>No posts found matching your search or filter criteria.</p>
+                      <p className='text-center md:text-left text-base text-zinc-600 dark:text-zinc-400'>{t('No posts found matching')}</p>
                     </div>
                   </div>
                 )}

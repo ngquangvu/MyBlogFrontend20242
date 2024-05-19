@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 
 const socialLinks = [
   {

@@ -1,10 +1,12 @@
 import { type Metadata } from 'next';
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 import { Providers } from '@/app/providers';
 import { Layout } from '@/components/layouts/Layout';
 import '@/styles/tailwind.css';
 import { Suspense } from 'react';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: {
@@ -17,18 +19,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+// export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function LocaleLayout({ children, params: { locale } }: { children: React.ReactNode; params: { locale: string } }) {
   const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_GA_ID;
+  const messages = await getMessages();
+
   return (
-    <html lang='en' className='h-full antialiased' suppressHydrationWarning>
+    <html lang={locale} className='h-full antialiased' suppressHydrationWarning>
       <GoogleAnalytics gaId={GA_ID || ''} />
       <body suppressHydrationWarning={true} className='flex h-full bg-zinc-50 dark:bg-black'>
         <Providers>
-          <div className='flex w-full'>
-            <Suspense>
-              <Layout>{children}</Layout>
-            </Suspense>
-          </div>
+          <NextIntlClientProvider messages={messages}>
+            <div className='flex w-full'>
+              <Suspense>
+                <Layout>{children}</Layout>
+              </Suspense>
+            </div>
+          </NextIntlClientProvider>
         </Providers>
       </body>
     </html>

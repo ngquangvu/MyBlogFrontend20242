@@ -1,7 +1,8 @@
 import { Post } from '@/types/post';
 import { Card } from '../Card';
 import { formatDate } from '@/utils';
-import Link from 'next/link';
+import { Link } from '@/navigation';
+import { useTranslations } from 'next-intl';
 
 type Props = {
   className?: string;
@@ -10,6 +11,8 @@ type Props = {
 };
 
 export const PostCard = ({ className = '', post, isShowTags = false }: Props) => {
+  const t = useTranslations('Blog');
+
   return (
     <Card as="article">
       <Card.Title href={`/blog/${post.url}`}>
@@ -30,7 +33,7 @@ export const PostCard = ({ className = '', post, isShowTags = false }: Props) =>
         {formatDate(post.postedAtShort || '')}
       </Card.Eyebrow>
       <Card.Description className='line-clamp-3'>{post.summary}</Card.Description>
-      <Card.Cta>Read blog</Card.Cta>
+      <Card.Cta>{t('Read blog')}</Card.Cta>
     </Card>
   );
 };

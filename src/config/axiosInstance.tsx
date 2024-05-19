@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import '../config/envConfig.ts';
 
 export const requestHeaders = {
   'Access-Control-Allow-Origin': 'origin',

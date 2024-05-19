@@ -6,7 +6,7 @@ import { PostDetail } from '@/components/molecules/PostDetail';
 import { SkeletonLine } from '@/components/molecules/SkeletonLine';
 import { usePost, usePosts } from '@/hooks/usePosts';
 import { Post, PostsRequestParams } from '@/types/post';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { usePathname } from 'next/navigation';
 
 export default function BlogPost() {
