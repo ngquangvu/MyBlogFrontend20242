@@ -1,7 +1,8 @@
 import { Post } from '@/types/post';
 import { Card } from '../Card';
 import { appendUrlParam, formatDate } from '@/utils';
-import Link from 'next/link';
+import { Link } from '@/navigation';
+import { useTranslations } from 'next-intl';
 
 type Props = {
   className?: string;
@@ -9,6 +10,8 @@ type Props = {
 };
 
 export const PostTimeline = ({ className = '', post }: Props) => {
+  const t = useTranslations('Blog');
+
   return (
     <article className={`${className} md:grid md:grid-cols-5 md:items-baseline`}>
       <Card className='md:col-span-4 ml-2'>
@@ -28,7 +31,7 @@ export const PostTimeline = ({ className = '', post }: Props) => {
               </li>
             ))}
         </ul>
-        <Card.Cta>Read blog</Card.Cta>
+        <Card.Cta>{t('Read blog')}</Card.Cta>
       </Card>
       <Card.Eyebrow as='time' dateTime={post.postedAtShort} className='mt-1 hidden md:block'>
         {formatDate(post.postedAtShort || '')}

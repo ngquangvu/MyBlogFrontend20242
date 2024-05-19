@@ -1,0 +1,163 @@
+{
+    "LocaleSwitcher": {
+        "en": "English",
+        "ja": "日本語"
+    },
+    "HeaderFooter": {
+        "home": "Home",
+        "about": "About",
+        "blog": "Blog",
+        "develop": "Develop",
+        "photography": "Photography",
+        "uses": "Uses",
+        "menu": "Menu",
+        "navigation": "Navigation",
+        "All rights reserved": "All rights reserved."
+    },
+    "Home": {
+        "hello": "Hello!",
+        "Hi there": "Hi there!",
+        "Hey": "Hey!",
+        "Greetings": "Greetings!",
+        "Howdy": "Howdy!",
+        "Salutations": "Salutations!",
+        "Nice to see you": "Nice to see you!",
+        "Hiya": "Hiya!",
+        "title": "I am Quang Vu, a full-stack developer based in Vietnam, specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.",
+        "Recent Posts": "Recent Posts",
+        "No posts found": "No posts found."
+    },
+    "Newsletter": {
+        "title": "Stay up to date",
+        "content": "Get notified when I publish something new, and unsubscribe at any time.",
+        "email placeholder": "Email address",
+        "Join": "Join"
+    },
+    "Works": {
+        "title": "Works",
+        "canvas": "Canvas.Asia",
+        "canvas title": "Leader ・ Developer",
+        "canvas start": "Dec 2021",
+        "canvas end": "Present",
+        "fujinet": "Fujinet Systems JSC",
+        "fujinet title": "Developer",
+        "fujinet start": "Mar 2018",
+        "fujinet end": "Nov 2021"
+    },
+    "About": {
+        "title": "A developer in<br /> Ho Chi Minh City",
+        "content 1": "I’m Quang Vu, a full-stack developer with {workYears} years of experience. My journey in this field has been marked by a deep commitment to learning and mastering the latest technologies, and applying them to deliver high-quality software solutions.",
+        "content 2": "My passion for technology was ignited in my childhood, and it has only grown stronger over the years. This passion led me to pursue a degree in Information Technology from a reputable university. After my graduation, I embarked on my professional journey as a web developer in Ho Chi Minh city.",
+        "content 3": "Over the years, I have worked on a diverse range of projects, including E-commerce platforms, Customer Relationship Management (CRM) systems, Content Management Systems (CMS), and various other web applications. I have had the privilege of working with clients from Japan, a country known for its uncompromising emphasis on quality. This experience has instilled in me a deep appreciation for the importance of delivering top-notch products.",
+        "content 4": "At this juncture in my career, I’m actively seeking new opportunities that will allow me to leverage my skills and experiences. I am eager to engage in discussions about potential roles, and how I can contribute to your team. I am also more than happy to share my experiences and insights gained over the years. I look forward to connecting with you soon.",
+        "Follow on Facebook": "Follow on Facebook",
+        "Follow on Instagram": "Follow on Instagram",
+        "Follow on GitHub": "Follow on GitHub",
+        "Follow on LinkedIn": "Follow on LinkedIn"
+    },
+    "Blog": {
+        "title": "Writing on technology, software design, leadership, and more",
+        "content": "My learning and work journey has been an investment in knowledge, and I’m excited to share it through writing about programming, leadership, product design, and beyond. It’s fantastic to hear these resonate with you!",
+        "Recent": "Recent",
+        "Relevant": "Relevant",
+        "Top": "Top",
+        "Search": "Search",
+        "Categories": "Categories",
+        "Tags": "Tags",
+        "Clear": "Clear",
+        "No posts found matching": "No posts found matching your search or filter criteria.",
+        "Read blog": "Read blog",
+        "Related": "Related",
+        "All": "All"
+    },
+    "Develop": {
+        "Skills": {
+            "title": "Some of my skills",
+            "content": "After dedicating considerable time to both learning and working, I’ve actively developed and achieved proficiency in a wide range of essential skills.",
+            "title 1": "Frontend Development",
+            "content 1": "Specializing in HTML, CSS, and JavaScript, with expertise in frameworks for creating dynamic and responsive web applications",
+            "title 2": "Backend Development",
+            "content 2": "Building and maintaining the server-side logic of web applications using TypeScript and PHP, managing data processing, and system integration",
+            "title 3": "Unity Development",
+            "content 3": "Specializing in creating and developing applications and games using the Unity engine",
+            "title 4": "Project Management",
+            "content 4": "Managing projects from conception to completion, ensuring timely delivery and high-quality results",
+            "title 5": "Leadership",
+            "content 5": "Take responsibility as a leader for {leaderYears} years, have certificates in Scrum - Agile and Project Management",
+            "title 6": "Communication",
+            "content 6": "Proficient in English and Japanese (JLPT N3) for effective communication in both languages",
+            "title 7": "Software Design",
+            "content 7": "Designing user interfaces and user experiences, creating wire frames and mockups for web and applications",
+            "title 8": "Enthusiasm ・ Sociability",
+            "content 8": "Passion, drive, and effective communication fuel teams for exceptional software solutions, collaboration, and a positive work environment"
+        },
+        "TechStackTools": {
+            "title": "Tech Stack & Tools",
+            "content": "I have experience working with a variety of languages, frameworks, and platforms, enabling me to deliver high-quality software solutions.",
+            "LANGUAGES & DATABASES": "LANGUAGES & DATABASES",
+            "LIBRARY & FRAMEWORKS": "LIBRARY & FRAMEWORKS",
+            "OTHERS": "OTHERS"
+        },
+        "Customers": {
+            "title": "Some of my customers",
+            "content": "Many of my customers are well-known companies in Japan, and I have had the privilege of working with them on various projects."
+        }
+    },
+    "Photography": {
+        "title": "My photography",
+        "content": "I love taking photos everywhere I go. Here are some of my favorite shots, all of them taken with my phone."
+    },
+    "Uses": {
+        "title": "Software I use, gadgets I love, and recommendations",
+        "content": "I get asked about the things I use to build software, stay productive, and live my life. Here’s a big list of all of my favorite stuff.",
+        "Workstation": {
+            "title": "Workstation",
+            "title 1": "Apple 15.6” MacBook Pro 2019, core i9, 32GB RAM",
+            "content 1": "I was using Windows laptops for a long time but I switched to MacBook. I like MacOS and performance is good for the development work I do.",
+            "title 2": "Dell 27” P2723QE 90W",
+            "content 2": "The display of this monitor is wide enough to have multiple windows open side by side at once. With 90W power delivery, I can charge my MacBook Pro with a single cable.",
+            "title 3": "Filco Minila Air 2016 x SP SA Oblivion Keycap",
+            "content 3": "I really liked the idea of a wireless mechanical keyboard with a long battery life, especially paired with the retro Oblivion keycap design.",
+            "title 4": "Apple Magic Trackpad 2",
+            "content 4": "As much as I love the track pad on the MacBook Pro, I love the Magic Trackpad 2 even more. It’s just so big and easy to use. The gestures are great and I can’t imagine using a computer without them.",
+            "title 5": "Apple Magic Keyboard 2022",
+            "content 5": "Recently, I’ve noticed that the keycap profile of my mechanical keyboard creates some noise, so I decided to switch to this keyboard. The typing experience is okay, and the function keys seamlessly integrate with my MacBook, working perfectly.",
+            "title 6": "Apple Airpod Pro 2",
+            "content 6": "Last gadget in this list I bought from Apple. I was using overhead and overear headphones but the weight of them was bothering me. So I switched to Airpod Pro 2, the sound quality and the noise cancellation is good enough for me.",
+            "title 7": "SMA Ergonomic 02",
+            "content 7": "My back was hurting from sitting in a chair all day so I got this chair. It’s not the most comfortable chair I’ve ever sat in but it’s is comfortable chair."
+        },
+        "DevelopmentTools": {
+            "title": "Development tools",
+            "title 1": "VS Code",
+            "content 1": "Best code editor I’ve ever used. I’ve tried a lot of them but I always come back to VS Code. It’s fast, has great extensions, and is just a pleasure to use.",
+            "title 2": "iTerm2",
+            "content 2": "A simple terminal emulator that’s highly customizable, offering numerous advanced features, seamless integration, and optimized performance.",
+            "title 3": "Insomnia",
+            "content 3": "Postman is great, but I prefer Insomnia. It’s simpler, faster, and I like its design."
+        },
+        "Design": {
+            "title": "Design",
+            "title 1": "Figma",
+            "content 1": "Beside Adobe XD, Figma is the best design tool I’ve ever used. It’s fast, has great collaboration features, and is just a pleasure to use.",
+            "title 2": "Adobe Photoshop",
+            "content 2": "No need to explain the powerful tool. I use it for photo editing and some design work.",
+            "title 3": "Adobe AI",
+            "content 3": "I’m not a designer but I use it for some simple vector design work."
+        },
+        "Productivity": {
+            "title": "Productivity",
+            "title 1": "Notion",
+            "content 1": "Can’t say enough good things about Notion. I use it for everything from note-taking to project management, book summaries, and even writing articles.",
+            "title 2": "ChatGPT",
+            "content 2": "The powerful AI tool that helps me a lot. I use ChatGPT to generate ideas for my articles, suggestions for my code, or anything else I need help with.",
+            "title 3": "Apple Focus",
+            "content 3": "Simple tool that helps me stay focused. I use it to block distracting websites and apps when I need to get work done. Sync across all my Apple devices is a great feature."
+        }
+    },
+    "Thanks": {
+        "title": "Thanks for subscribing",
+        "content": "I’ll send you an email any time I publish a new blog post, release a new project, or have anything interesting to share that I think you’d want to hear about. You can unsubscribe at any time, no hard feelings.",
+        "Back to home": "Back to home"
+    }
+}

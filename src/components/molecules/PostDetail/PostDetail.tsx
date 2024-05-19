@@ -6,8 +6,10 @@ import { AppContext } from '@/app/providers';
 import { Container } from '@/components/molecules/Container';
 import { Icon } from '@iconify/react';
 import { Post } from '@/types/post';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { PostCard } from '../PostCard';
+import { useTranslations } from 'next-intl';
+
 import hljs from 'highlight.js';
 import xml from 'highlight.js/lib/languages/xml';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -42,6 +44,8 @@ hljs.registerLanguage('bash', bash);
 hljs.registerLanguage('ebnf', ebnf);
 
 export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: Post[] }) {
+  const t = useTranslations('Blog');
+
   let router = useRouter();
   let { previousPathname } = useContext(AppContext);
 
@@ -123,9 +127,9 @@ export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: P
         {relatedPosts && relatedPosts?.length > 0 && (
           <div className='mx-auto max-w-3xl border-t border-default dark:border-zinc-700/40'>
             <div className='flex space-x-6 md:space-x-10 mt-16 mb-12'>
-              <h2 className='text-zinc-800 pointer-events-none text-base md:text-xl font-bold dark:text-zinc-100'>Related</h2>
+              <h2 className='text-zinc-800 pointer-events-none text-base md:text-xl font-bold dark:text-zinc-100'>{t('Related')}</h2>
               <Link href='/blog' className='hover:text-teal-500 text-base md:text-xl font-bold text-zinc-400 dark:text-zinc-500 transition-all duration-200'>
-                All
+                {t('All')}
               </Link>
             </div>
             <div className='flex flex-col gap-16'>

@@ -1,5 +1,6 @@
 import Image, { ImageProps } from 'next/image';
 import { Icon } from '@iconify/react';
+import { useTranslations } from 'next-intl';
 
 import logoCanvasAsia from '@/images/logos/company/canvas_asia.png';
 import logoFujinet from '@/images/logos/company/fujinet_jsc.png';
@@ -13,23 +14,24 @@ interface Role {
 }
 
 export function JobRoleResume() {
+  const t = useTranslations('Works');
   const resume: Array<Role> = [
     {
-      company: 'Canvas.Asia',
-      title: 'Developer ・ Leader',
+      company: t('canvas'),
+      title: t('canvas title'),
       logo: logoCanvasAsia,
-      start: 'Dec 2021',
+      start: t('canvas start'),
       end: {
-        label: 'Present',
+        label: t('canvas end'),
         dateTime: new Date().getFullYear().toString(),
       },
     },
     {
-      company: 'Fujinet Systems JSC',
-      title: 'Developer',
+      company: t('fujinet'),
+      title: t('fujinet title'),
       logo: logoFujinet,
-      start: 'Mar 2018',
-      end: 'Nov 2021',
+      start: t('fujinet start'),
+      end: t('fujinet end'),
     },
   ];
 
@@ -39,7 +41,7 @@ export function JobRoleResume() {
         <div className='w-6'>
           <Icon icon='tabler:briefcase' className='h-6 w-6 text-zinc-500 flex-none' />
         </div>
-        <span className='ml-3'>Work</span>
+        <span className='ml-3'>{t('title')}</span>
       </h2>
       <ol className='mt-6 space-y-4'>
         {resume.map((role, roleIndex) => (
