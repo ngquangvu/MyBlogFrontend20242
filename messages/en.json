@@ -45,8 +45,8 @@
         "fujinet end": "Nov 2021"
     },
     "About": {
-        "title": "I’m Quang Vu.<br />A developer in<br /> Ho Chi Minh City.",
-        "content 1": "I’m a full-stack developer with {workYears} years of experience. My journey in this field has been marked by a deep commitment to learning and mastering the latest technologies, and applying them to deliver high-quality software solutions.",
+        "title": "A developer in<br /> Ho Chi Minh City",
+        "content 1": "I’m Quang Vu, a full-stack developer with {workYears} years of experience. My journey in this field has been marked by a deep commitment to learning and mastering the latest technologies, and applying them to deliver high-quality software solutions.",
         "content 2": "My passion for technology was ignited in my childhood, and it has only grown stronger over the years. This passion led me to pursue a degree in Information Technology from a reputable university. After my graduation, I embarked on my professional journey as a web developer in Ho Chi Minh city.",
         "content 3": "Over the years, I have worked on a diverse range of projects, including E-commerce platforms, Customer Relationship Management (CRM) systems, Content Management Systems (CMS), and various other web applications. I have had the privilege of working with clients from Japan, a country known for its uncompromising emphasis on quality. This experience has instilled in me a deep appreciation for the importance of delivering top-notch products.",
         "content 4": "At this juncture in my career, I’m actively seeking new opportunities that will allow me to leverage my skills and experiences. I am eager to engage in discussions about potential roles, and how I can contribute to your team. I am also more than happy to share my experiences and insights gained over the years. I look forward to connecting with you soon.",
@@ -56,7 +56,7 @@
         "Follow on LinkedIn": "Follow on LinkedIn"
     },
     "Blog": {
-        "title": "Writing on technology, software design, leadership, and more.",
+        "title": "Writing on technology, software design, leadership, and more",
         "content": "My learning and work journey has been an investment in knowledge, and I’m excited to share it through writing about programming, leadership, product design, and beyond. It’s fantastic to hear these resonate with you!",
         "Recent": "Recent",
         "Relevant": "Relevant",
@@ -104,11 +104,11 @@
         }
     },
     "Photography": {
-        "title": "Photography",
+        "title": "My photography",
         "content": "I love taking photos everywhere I go. Here are some of my favorite shots, all of them taken with my phone."
     },
     "Uses": {
-        "title": "Software I use, gadgets I love, and other things I recommend.",
+        "title": "Software I use, gadgets I love, and recommendations",
         "content": "I get asked about the things I use to build software, stay productive, and live my life. Here’s a big list of all of my favorite stuff.",
         "Workstation": {
             "title": "Workstation",
