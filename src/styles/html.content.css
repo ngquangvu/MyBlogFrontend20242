@@ -71,6 +71,10 @@
   color: #14b8a6;
 }
 
+.tiptap p a {
+  word-break: break-word;
+}
+
 .tiptap ol,
 .tiptap ul,
 .tiptap menu {

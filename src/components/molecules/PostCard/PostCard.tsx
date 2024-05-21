@@ -32,7 +32,7 @@ export const PostCard = ({ className = '', post, isShowTags = false }: Props) =>
       <Card.Eyebrow as="time" dateTime={post.postedAtShort} decorate>
         {formatDate(post.postedAtShort || '')}
       </Card.Eyebrow>
-      <Card.Description className='line-clamp-3'>{post.summary}</Card.Description>
+      <Card.Description className='line-clamp-3 break-words'>{post.summary}</Card.Description>
       <Card.Cta>{t('Read blog')}</Card.Cta>
     </Card>
   );
