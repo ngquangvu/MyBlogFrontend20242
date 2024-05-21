@@ -19,7 +19,7 @@ export const PostTimeline = ({ className = '', post }: Props) => {
         <Card.Eyebrow as='time' dateTime={post.postedAtShort} className='md:hidden' decorate>
           {formatDate(post.postedAtShort || '')}
         </Card.Eyebrow>
-        <Card.Description className='line-clamp-3'>{post.summary}</Card.Description>
+        <Card.Description className='line-clamp-3 break-all'>{post.summary}</Card.Description>
         <ul className='relative z-20 flex flex-wrap gap-x-5 gap-y-1 mt-3'>
           {post?.postTags &&
             post?.postTags.map((tag, index) => (
