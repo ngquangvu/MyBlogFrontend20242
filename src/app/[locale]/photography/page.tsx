@@ -229,12 +229,6 @@ const images: CustomImage[] = [
     original: '/images/gallery/photo_36.jpeg',
     width: 300,
     height: 200,
-  },
-  {
-    src: '/images/gallery/photo_37_thumbnail.jpeg',
-    original: '/images/gallery/photo_37.jpeg',
-    width: 300,
-    height: 200,
   }
 ];
 
