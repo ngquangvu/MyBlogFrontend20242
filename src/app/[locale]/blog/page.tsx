@@ -11,6 +11,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { SkeletonLines } from '@/components/molecules/SkeletonLines';
 import { Suspense } from 'react';
 import { useTranslations } from 'next-intl';
+import { ScrollToTop } from '@/components/organisms/ScrollToTop';
 
 export default function Blog() {
   const t = useTranslations('Blog');
@@ -30,6 +31,7 @@ export default function Blog() {
   return (
     <Suspense>
       <SimpleLayout title={t('title')} intro={t('content')}>
+        <ScrollToTop />
         <div className='mt-4 mb-6 md:mb-0 md:mt-8'>
           <SearchSortBar />
         </div>
