@@ -26,6 +26,7 @@ import n1ql from 'highlight.js/lib/languages/n1ql';
 import json from 'highlight.js/lib/languages/json';
 import bash from 'highlight.js/lib/languages/bash';
 import ebnf from 'highlight.js/lib/languages/ebnf';
+import { ScrollToTop } from '@/components/organisms/ScrollToTop';
 
 hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('javascript', javascript);
@@ -92,6 +93,8 @@ export function PostDetail({ post, relatedPosts }: { post: Post; relatedPosts: P
   return (
     <>
       <Container className='mt-12 sm:mt-24'>
+        <ScrollToTop />
+
         <div className='xl:relative'>
           <div className='mx-auto max-w-3xl -mt-6'>
             {previousPathname && (
