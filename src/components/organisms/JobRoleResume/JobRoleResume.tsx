@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 
 import logoCanvasAsia from '@/images/logos/company/canvas_asia.png';
 import logoFujinet from '@/images/logos/company/fujinet_jsc.png';
+import logoShuei from '@/images/logos/company/shuei_infotech.png';
 
 interface Role {
   company: string;
@@ -17,14 +18,21 @@ export function JobRoleResume() {
   const t = useTranslations('Works');
   const resume: Array<Role> = [
     {
+      company: t('shuei'),
+      title: t('shuei title'),
+      logo: logoShuei,
+      start: t('shuei start'),
+      end: {
+        label: t('shuei end'),
+        dateTime: new Date().getFullYear().toString(),
+      },
+    },
+    {
       company: t('canvas'),
       title: t('canvas title'),
       logo: logoCanvasAsia,
       start: t('canvas start'),
-      end: {
-        label: t('canvas end'),
-        dateTime: new Date().getFullYear().toString(),
-      },
+      end: t('canvas end'),
     },
     {
       company: t('fujinet'),
